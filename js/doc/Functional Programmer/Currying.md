@@ -1,8 +1,8 @@
 # Currying
 
 - Một Curried Fuction là một hàm chỉ nhận một tham số trong một thời điểm.
-- Ex:
 
+### Ex:
 ```js
 const add = x => y => x + y
 
