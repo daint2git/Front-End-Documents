@@ -6,8 +6,9 @@
 - Pure Function sẽ luôn trả về cùng output với cùng input, bất kể có thực hiện bao nhiêu lần.
 - Pure Function đảm bảo việc hàm sẽ không có Side Effects.
 
-Ex:
-
+### Ex:
+```js
 function add(x, y) {
   return x + y;
 }
+```
