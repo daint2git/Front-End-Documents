@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Event listener</title>
+</head>
+<body>
+  <div>
+    <input type="text" id="input-new-todo" />
+    <button id="add-new-todo">Add</button>
+  </div>
+  <ul id="todo-list"></ul>
+  <script type="text/javascript">
+    // initial data in list
+    const todoList = ['Play game 1', 'Play game 2', 'Play game 3']
+
+    const addNewTodo = () => {
+      const input = document.getElementById('input-new-todo')
+      const inputValue = input.value
+      todoList.push(inputValue)
+      input.value = ''
+      render()
+    }
+
+    let count = 0
+    const countBtnClick = () => console.log('count', ++count)
+
+    const addBtn = document.getElementById('add-new-todo')
+    // btn trigger a click event (event listener)
+    // listeners { 'click': [addNewTodo, countBtnClick] }
+    addBtn.addEventListener('click', addNewTodo)
+    addBtn.addEventListener('click', countBtnClick)
+
+    const render = () => {
+      const todoListElement = document.getElementById('todo-list')
+      const todoListChildrenElement = todoList.reduce((accumulator, currentValue) =>
+        accumulator + `<li>${currentValue}</li>`, '')
+      todoListElement.innerHTML = todoListChildrenElement
+    }
+    render()
+  </script>
+</body>
+</html>
