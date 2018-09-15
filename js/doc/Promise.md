@@ -29,6 +29,6 @@ console.log('---End')
 ### Example:
 ```js
 Promise.all([readFilePromise('Data types.md'), readFilePromise('JSON.md')])
-.then(values => values.map(value => console.log(value)))
-.catch(err => console.error(err))
+  .then(values => values.map(value => console.log(value)))
+  .catch(err => console.error(err))
 ```
