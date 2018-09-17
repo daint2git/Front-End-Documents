@@ -7,9 +7,9 @@ git init
 ```
 
 ## remote
-- Ánh xạ kho lưu trữ local và online (local repository và remote repository)
+- Ánh xạ kho lưu trữ local và online (`local repository` và `remote repository`)
 ```
-git remote add origin <url git repository>
+git remote add origin <url repository>
 ```
 
 ## clone
@@ -19,7 +19,7 @@ git clone <url remote repository>
 ```
 
 ## status
-- Trạng thái của các file
+- Trạng thái của các file tại local
 ```
 git status
 ```
@@ -72,13 +72,13 @@ git log
 ```
 
 ## show
-- Hiển thị nội dung của một commit
+- Hiển thị nội dung của một commit được chỉ định
 ```
 git show <commit hash code>
 ```
 
 ## push
-- Đẩy các commit lên `remote branch`
+- Đẩy các commit lên `branch`
 ```
 git push <tên remote> <tên branch>
 ```
@@ -92,17 +92,17 @@ git push <tên remote> <tên branch>
 ```
 git branch
 ```
-- Tạo mới branch:
+- Tạo mới branch
 ```
 git branch <tên branch>
 ```
-- Xóa branch:
+- Xóa branch
 ```
 git branch -D <tên branch>
 ```
 
 ## checkout
-- Chuyển `remote branch` khác
+- Chuyển `branch` khác
 ```
 git checkout <tên branch cần chuyển qua>
 ```
