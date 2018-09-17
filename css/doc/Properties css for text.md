@@ -126,7 +126,7 @@ p { word-break: keep-all; }
 
 p { word-break: break-word; }
 ```
-- Các giá trị thường được sử dụng của thuộc tính
+- Các giá trị của thuộc tính
   - `word-break: break-all`: ngắt dòng theo `kí tự` khi văn bản bản vượt quá độ dài thẻ bao bọc nó
   - `word-break: keep-all`: ngắt dòng theo `từ` khi văn bản bản vượt quá độ dài thẻ bao bọc nó
   - `word-break: break-word`: ngắt dòng theo `từ` khi văn bản vượt quá độ dài thẻ bao bọc nó (nếu từ có độ dài vượt quá độ dài thẻ bao bọc nó thì sẽ tự động ngắt dòng)
@@ -135,4 +135,17 @@ p { word-break: break-word; }
 - Thuộc tính quy định xuống dòng văn bản khi chuỗi kí tự có quá nhiều kí tự liền nhau (giống `word-break: break-word`)
 ```css
 p { word-wrap: break-word; }
+```
+
+## user-select
+- Thuộc tính quy định liệu văn bản của một phần tử có thể được chọn hay không
+- Chỉ sử dụng được cho `div tag`
+```css
+div { user-select: auto; }
+
+div { user-select: none; }
+
+div { user-select: text; }
+
+div { user-select: all; }
 ```
