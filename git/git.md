@@ -7,19 +7,28 @@ git init
 ```
 
 ## remote
-- Ánh xạ kho lưu trữ local và online (`local repository` và `remote repository`)
+- Liệt kê các remote urls
 ```
-git remote add origin <url repository>
+git remote -v
+```
+- Thêm  remote repository
+```
+git remote add <tên remote repository> https://github.com/{user}/{repository}.git
+// tên remote repository thường là origin
 ```
 
 ## clone
-- Sao chép từ `remote repository` về `working directory`
+- Sao chép một remote repository đến thư mục mới có tên giống repository (thư mục được tự động tạo mới)
 ```
-git clone <url remote repository>
+git clone https://github.com/{user}/{repository}.git
+```
+- Sao chép một remote repository đến thư mục hiện tại
+```
+git clone https://github.com/{user}/{repository}.git .
 ```
 
 ## status
-- Trạng thái của các file tại local
+- Kiểm tra trạng thái của các file tại `working directory`
 ```
 git status
 ```
@@ -60,27 +69,40 @@ git revert <commit hash code>
 ```
 
 ## commit
-- Tạo mới một commit
+- Thêm mới một commit
 ```
-git commit -m "<commit content>"
+git commit -m "<commit message>"
+```
+- Đổi tên `commit message` của commit cuối
+```
+git commit --amend -m "<new commit message>"
 ```
 
 ## log
-- Hiển thị các commit
+- Xem lịch sử commit
 ```
 git log
 ```
+- Xem lịch sử commit (với mỗi commit trên 1 dòng)
+```
+git log --oneline
+```
+- Xem lịch sử commit (cho 2 lần commits gần nhất)
+```
+git log -2
+```
 
 ## show
-- Hiển thị nội dung của một commit được chỉ định
+- Xem nội dung của một commit được chỉ định
 ```
 git show <commit hash code>
 ```
 
 ## push
-- Đẩy các commit lên `branch`
+- Đẩy các commit lên `remote branch`
 ```
-git push <tên remote> <tên branch>
+git push <tên remote repository> <tên remote branch>
+// tên remote repository thường là origin
 ```
 
 ## branch
@@ -128,14 +150,36 @@ git rebase -i <commit hash code>
 `Note:` với `commit hash code` là hash code của commit cuối cùng của nhóm cần gộp
 
 ## fetch
-- Tiến hành kéo các thay đổi từ trên `remote server` về `local` của chúng ta nhưng không tự động `merge`
+- Tiến hành kéo các thay đổi từ trên `remote server` về `local`
+- Không tự động `merge`
 ``` 
-git fetch <tên remote> <tên remote branch>
+git fetch <tên remote repository> <tên remote branch>
+// tên remote repository thường là origin
 ```
 
 ## pull
-- Tiến hành kéo các thay đổi từ trên `remote server` về `local` của chúng ta và đồng thời tiến hành `merge` các thay đổi đó ngay
+- Tiến hành kéo các thay đổi từ trên `remote server` về `local`
+- Tự động `merge` các thay đổi đó ngay
 ``` 
-git pull <tên remote> <tên remote branch>
+git pull <tên remote repository> <tên remote branch>
+// tên remote repository thường là origin
 ```
 - `git pull` = `git fetch` + `git merge`
+
+## diff
+- Xem thay đổi của một file được chỉ định
+```
+git diff <tên file>
+```
+- Xem thay đổi của những file hiện tại (chưa được add)
+```
+git diff
+```
+- Xem thay đổi của những file hiện tại (đã được add nhưng chưa commit)
+```
+git diff --cached
+```
+- Xem thay đổi giữa 2 commits
+```
+git diff <commit hash code 1> <commit hash code 2>
+```
