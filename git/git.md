@@ -183,3 +183,13 @@ git diff --cached
 ```
 git diff <commit hash code 1> <commit hash code 2>
 ```
+
+## clean
+- Remove untracked files (e.g., new files, generated files)
+```
+git clean -f
+```
+- Remove untracked directories (e.g., new or automatically generated directories)
+```
+git clean -fd
+```
