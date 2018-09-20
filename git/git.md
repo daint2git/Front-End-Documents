@@ -193,3 +193,8 @@ git clean -f
 ```
 git clean -fd
 ```
+## How do I discard unstaged changes in Git?
+```
+git clean -df
+git checkout -- .
+```
