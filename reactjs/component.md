@@ -32,7 +32,7 @@ const StatelessComponent = ({ children }) => <div>{children}</div>
 
 ## Component
 - Dạng thông thường, được khai bao dựa trên class của es6
-- Có đầy đủ các `life cycle`, `local state`
+- Có đầy đủ các `lifecycle`, `local state`
 - Ví dụ:
 ```js
 class Message extends React.Component {
@@ -44,6 +44,10 @@ class Message extends React.Component {
 
   onRead() {
     this.setState({ isReaded: true })
+  }
+  
+  componentDidMount() {
+    this.props.sendNotification()
   }
 
   render() {
