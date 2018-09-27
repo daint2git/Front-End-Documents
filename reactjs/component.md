@@ -17,7 +17,7 @@
   - Không có cách nào để kiểm soát việc render
 
 - Ví dụ
-```js
+```jsx
 // Thông thường
 function StatelessComponent(props) {
   return <div>{props.children}</div>
@@ -34,7 +34,7 @@ const StatelessComponent = ({ children }) => <div>{children}</div>
 - Dạng thông thường, được khai bao dựa trên class của es6
 - Có đầy đủ các `lifecycle`, `local state`
 - Ví dụ:
-```js
+```jsx
 class Message extends React.Component {
   constructor(props) {
     super(props)
@@ -66,7 +66,7 @@ class Message extends React.Component {
 - Khi *props* và *state* thay đổi. `PureComponent` sẽ làm một *shallow comparison* trên cả props và state
 - Muốn `PureComponent` hoạt động chính xác thì *props* và *state* phải là *immutability*
 - Ví dụ:
-```js
+```jsx
 // With Component
 class Message extends React.Component {
   shouldComponentUpdate(nextProps) {
