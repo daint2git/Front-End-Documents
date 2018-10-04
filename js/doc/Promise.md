@@ -24,7 +24,7 @@ readFilePromise('Data types.md')
 console.log('---End')
 ```
 
-- `Promise.all()`: Phương thức `Promise.all(iterable)` trả ra một Promise mới và promise mới này chỉ được kết thúc khi tất cả các promise trong `iterable` kết thúc hoặc có một promise nào đó xử lý thất bại. Kết quả của promise mới này là một mảng chứa kết quả của tất cả các promise theo đúng thứ tự hoặc kết quả lỗi của promise gây lỗi.
+- `Promise.all(iterator)`: Nhận vào một mảng các promises và trả về một promise mới và promise mới này chỉ được kết thúc khi tất cả các promise trong `iterable` kết thúc hoặc có một promise nào đó xử lý thất bại. Kết quả của promise mới này là một mảng chứa kết quả của tất cả các promise theo đúng thứ tự hoặc kết quả lỗi của promise gây lỗi.
 
 ### Example:
 ```js
@@ -32,3 +32,8 @@ Promise.all([readFilePromise('Data types.md'), readFilePromise('JSON.md')])
   .then(values => values.map(value => console.log(value)))
   .catch(err => console.error(err))
 ```
+
+- `Promise.race(iterator)`: Nhận vào một mảng các promises và resolve/reject ngay khi một trong các promises trong mảng resolve/reject.
+- `Promise.resolve()`: Trả về một promise được tự động resolve.
+- `Promise.reject()`: Trả về một promise được tự động reject.
+
