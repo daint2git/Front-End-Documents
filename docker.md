@@ -20,7 +20,7 @@
 | Lệnh | Ý nghĩa |
 |--------|------|
 | `docker pull {image_name}` | Pull một image từ Docker Hub |
-| `docker run --name {container_name} -p {host_port}:{container_port} -v {/host_path}:{/container_path} -it {image_name} /bin/bash` | Tạo mới một container, đồng thời khởi động với tùy chọn cổng và volume |
+| `docker run --name {container_name} -p {host_port}:{container_port} -v {/host_path}:{/container_path} -it {image_name}` | Tạo mới một container, đồng thời khởi động với tùy chọn cổng và volume |
 | `docker images` | Liệt kê các images hiện có |
 | `docker rmi {image_id/name}` | Xóa một image |
 | `docker rmi $(docker images -q)` | Xóa các images hiện có |
@@ -73,16 +73,17 @@ Lưu ý:
 ```
 docker build -t <image_name> .
 ```
-
 Ví dụ:
 ```
 docker build -t ubuntu_nginx .
 ```
+- Tùy chọn `-t` giúp bạn có thể chọn tên cho image bạn tạo ra.
+- Tùy chọn `.` cho biết file Dockerfile đang ở cùng đường dẫn.
 
 ### Tạo container từ image
 
 ```
-docker run -v <forder_in_computer>:<forder_in_container> -p <port_in_computer>:<port_in_container> -it <image_name> /bin/bash
+docker run -v <forder_in_computer>:<forder_in_container> -p <port_in_computer>:<port_in_container> -it <image_name>
 ```
 Trong đó:
 - -v : Thể hiện việc mount volume, dữ liệu từ thư mục từ máy thật có thể được truy cập từ thư mục của máy ảo.
@@ -91,7 +92,7 @@ Trong đó:
 
 Ví dụ vào localhost mặc định của nginx:
 ```
-docker run -p 9000:80 -it nginx /bin/bash
+docker run -p 9000:80 -it nginx
 ```
 
 # Docker Hub
