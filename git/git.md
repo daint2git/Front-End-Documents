@@ -61,6 +61,16 @@ git reset <tên file>
   ```
   git reset --hard <commit hash code>
   ```
+  
+Note: 
+- Trở về trạng thái của các file trước khi commit (chưa add)
+```
+git reset HEAD~1
+```
+- Trở về trạng thái của các file trước khi commit (đã add)
+```
+git reset --soft HEAD^
+```
 
 ## revert
 - Tạo ra một commit mới đảo ngược lại những thay đổi trong commit được chỉ định
