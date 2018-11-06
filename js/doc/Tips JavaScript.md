@@ -26,3 +26,9 @@ mandatory = () => {
 
 foo = (bar = mandatory()) => bar;
 ```
+
+## falsy (false, null, undefined, 0, NaN, '')
+```js
+const a = [1, 'b', [], {}, false, null, undefined, 0, NaN, ''];
+const b = a.filter(Boolean); // [1, "b", [], {}]
+```
