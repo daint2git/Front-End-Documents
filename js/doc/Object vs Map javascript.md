@@ -5,6 +5,7 @@
 ```js
 // Object chỉ cho phép lưu trữ key kiểu String hoặc Symbol.
 const obj = {
+  1: 1,
   x: 1,
   "a b": 2,
   [Symbol(1)]: 3
