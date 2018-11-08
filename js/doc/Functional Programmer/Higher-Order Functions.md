@@ -6,9 +6,8 @@
   - Trả về hàm
   - Vừa nhận hàm làm tham số đầu vào, vừa trả về hàm
 
-### Ex:
+### Nhận hàm làm tham số đầu vào:
 ```js
-// Nhận hàm làm tham số đầu vào
 function A(func) {
   console.log('Hàm A')
   func()
@@ -19,8 +18,10 @@ function B() {
 }
 
 A(B)
+```
 
-// Trả về hàm
+### Trả về hàm:
+```js
 function A() {
   console.log('Hàm A')
   return function B() {
@@ -29,8 +30,9 @@ function A() {
 }
 
 A()()
-
-// Vừa nhận hàm làm tham số đầu vào, vừa trả về hàm
+```
+### Vừa nhận hàm làm tham số đầu vào, vừa trả về hàm:
+```js
 function A(func) {
   console.log('Hàm A')
   return function B() {
