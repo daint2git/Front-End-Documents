@@ -21,12 +21,27 @@ function B() {
 A(B)
 
 // Trả về hàm
-function A(value1) {
-  console.log(value1)
-  return function B(value2) {
-    console.log(value2)
+function A() {
+  console.log('Hàm A')
+  return function B() {
+    console.log('Hàm B')
   }
 }
 
-A(1)(2)
+A()()
+
+// Vừa nhận hàm làm tham số đầu vào, vừa trả về hàm
+function A(func) {
+  console.log('Hàm A')
+  return function B() {
+    console.log('Hàm B')
+    func()
+  }
+}
+
+function C() {
+  console.log('Hàm C')
+}
+
+A(C)()
 ```
