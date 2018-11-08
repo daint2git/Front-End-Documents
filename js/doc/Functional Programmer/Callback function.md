@@ -4,12 +4,12 @@
 
 ### Ví dụ:
 ```js
-function A(func) {
+const A = func => {
   console.log('Hàm A')
   func()
 }
 
-function B() {
+const B = () => {
   console.log('Hàm B')
 }
 
