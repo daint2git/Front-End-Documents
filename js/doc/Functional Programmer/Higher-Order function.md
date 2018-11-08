@@ -1,4 +1,4 @@
-# Higher-Order Function
+# Higher-Order function
 
 - Hàm có cấp bậc cao hơn → có nghĩa là hàm có nhiều khả năng và linh hoạt hơn.
 - Là hàm có hoạt động dựa trên 1 hàm khác. Cụ thể các trường hợp sau:
