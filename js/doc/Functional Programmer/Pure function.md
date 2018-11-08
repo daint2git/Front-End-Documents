@@ -1,4 +1,4 @@
-# Pure Function(Purity)
+# Pure function
 
 - Là những hàm hết sức đơn giản, chỉ thao tác dựa trên tham số đầu vào.
 - Hầu hết các hàm đều có ít nhất một tham số.
