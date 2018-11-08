@@ -3,7 +3,7 @@
 - Currying là kỹ thuật tách một hàm nhận nhiều tham số thành một chuỗi các hàm, với mỗi hàm chỉ nhận một tham số
 - Một Curried Fuction là một hàm chỉ nhận một tham số trong một thời điểm.
 
-### Ex:
+### Ví dụ:
 ```js
 const add = x => y => x + y
 
@@ -13,7 +13,7 @@ const add10 = add(10)
 console.log(add10(15)) // 25
 ```
 
-### Ex:
+### Ví dụ:
 ```js
 const songs = [
   { id: 1, name: 'name 1' },
