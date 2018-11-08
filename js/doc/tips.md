@@ -1,4 +1,4 @@
-# Tips JavaScript
+# tips
 
 ## JavaScript for Loop Shorthand
 ```js
