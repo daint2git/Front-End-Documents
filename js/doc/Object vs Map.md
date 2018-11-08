@@ -1,6 +1,6 @@
-# Object vs Map javascript
+# Object vs Map
 
-## 
+## Object
 
 ```js
 // Object chỉ cho phép lưu trữ key kiểu String hoặc Symbol.
@@ -11,7 +11,10 @@ const obj = {
   [Symbol(1)]: 3
 }
 console.log(obj)
+```
+## Map
 
+```js
 // Map cho phép mọi kiểu dữ liệu có thể làm key, kể cả Number, NaN, Function, Object,…
 const map = new Map()
 map.set(Symbol(1), 1)
