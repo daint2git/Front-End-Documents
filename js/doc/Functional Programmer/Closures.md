@@ -1,8 +1,9 @@
-# Closures - Bao đóng
+# Closures
 
-- Một closure (bao đóng) là một scope của một hàm mà sẽ tồn tại chừng nào còn có tham chiếu đến hàm đó.
+- Một closure (bao đóng) là một scope của một hàm.
+- Scope của một hàm vẫn sẽ tồn tại đến khi nào còn có tham chiếu đến hàm đó (chưa thực thi hết các hàm trả về).
 
-### Ex:
+### Ví dụ:
 ```js
 function grandParent(g1, g2) {
   const g3 = 3;
