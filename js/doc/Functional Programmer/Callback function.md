@@ -1,4 +1,4 @@
-# Callback Function
+# Callback function
 
 - Là hàm được truyền vào một hàm khác như một tham số đầu vào, sau đó sẽ được gọi thực thi bên trong hàm đó.
 
