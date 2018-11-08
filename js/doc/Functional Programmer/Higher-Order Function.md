@@ -18,6 +18,8 @@ function B() {
 }
 
 A(B)
+
+// Hàm A được xem là higher-order function
 ```
 
 ### Trả về hàm:
@@ -30,6 +32,8 @@ function A() {
 }
 
 A()()
+
+// Hàm A được xem là higher-order function
 ```
 ### Vừa nhận hàm làm tham số đầu vào, vừa trả về hàm:
 ```js
@@ -46,4 +50,6 @@ function C() {
 }
 
 A(C)()
+
+// Hàm A được xem là higher-order function
 ```
