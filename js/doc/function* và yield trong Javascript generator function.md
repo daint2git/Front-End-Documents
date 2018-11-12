@@ -26,7 +26,7 @@ Sau khi hàm next() của iterator được gọi, generator function sẽ thự
 
 ### Ví dụ 1
 ```js
-function * id_maker() {
+function* id_maker() {
   let index = 0
   while(index < 3)
     yield index++
@@ -42,13 +42,13 @@ console.log(gen1.next()) // {value: undefined, done: true}
 
 ### Ví dụ 2
 ```js
-function * anotherGenerator(i) {
+function* anotherGenerator(i) {
   yield i + 1
   yield i + 2
   yield i + 3
 }
 
-function * generator(i) {
+function* generator(i) {
   yield i
   yield* anotherGenerator(i)
   yield i + 10
