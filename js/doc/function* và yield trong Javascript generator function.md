@@ -64,3 +64,15 @@ console.log(gen2.next()) // {value: 20, done: false}
 console.log(gen2.next()) // {value: undefined, done: true}
 
 ```
+
+### Ví dụ 3
+```js
+function* foo(x) {
+  const y = x * (yield)
+  return y
+}
+
+const it = foo(5)
+console.log(it.next()) // {value: undefined, done: false}
+console.log(it.next(6)) // {value: 30, done: true}
+```
