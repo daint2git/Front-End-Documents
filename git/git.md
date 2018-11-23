@@ -208,3 +208,14 @@ git clean -fd
 git clean -df
 git checkout -- .
 ```
+## Revert đến commit trước (sau khi đã push lên git)
+```
+# Reset the index to the desired commit
+git reset --hard <commit>
+
+# Move the branch pointer back to the previous HEAD
+git reset --soft HEAD@{1}
+
+# Commit the changes
+git commit -m "Revert to <commit>"
+```
