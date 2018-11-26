@@ -34,6 +34,8 @@ console.log(a) // {c: 99}
 console.log(b) // {c: 99}
 ```
 
+## Chú ý
+
 ### Sự khác nhau giữa `Undefined` và `Null`
 ```js
 typeof undefined           // undefined
