@@ -1,6 +1,7 @@
 # Prototype
 
 ## Prototype là gì ?
+- Prototype là cơ chế mà các object trong javascript kế thừa các tính năng từ một object khác.
 - Trong JavaScript, trừ undefined, toàn bộ các kiểu còn lại đều là object. Các kiểu string, number, boolean lần lượt là object dạng String, Number, Boolean. Mảng là object dạng Array, hàm là object dạng Function. Prototype của mỗi object chính là cha của nó, cha của String là String.prototype, cha của Number là Number.prototype, của Array là Array.prototype.
 - Array, Number hay String có cha là Object, do đó chúng đều có các hàm như `constructor, hasOwnProperty, toString` thuộc về của Object.prototype.
 
