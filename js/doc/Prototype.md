@@ -15,9 +15,9 @@ console.log(str.hello) // "Hello JavaScript"
 console.log(str.print(999)) // 999
 ```
 
-### Prototype có sẵn và Prototype tự định nghĩa
+### Các loại prototype
 ```js
-// Object literal
+// Prototype có sẵn
 const person = {
   firstName: 'Dai',
   lastName: 'Nguyen',
@@ -28,7 +28,7 @@ const person = {
 
 console.log(person.constructor.name) // "Object"
 
-// Constructor function
+// Prototype tự định nghĩa
 function Person(_firstName, _lastName) {
   this.firstName = _firstName
   this.lastName = _lastName
@@ -46,4 +46,4 @@ console.log(otherPerson.constructor.name) // "Person"
 
 ## Prototype dùng để làm gì ?
 - Kể tử `es5` trở về trước, trong JavaScript không có khái niệm class, do vậy, để kế thừa các thuộc tính/ phương thức của một object, ta phải sử dụng prototype.
-- Prototype có phần giống class, được sử dụng để hiện thực việc kế thừa (interitance) trong JavaScript
+- Prototype có phần giống class, được sử dụng để hiện thực việc kế thừa (interitance) trong JavaScript.
