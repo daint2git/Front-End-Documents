@@ -1,18 +1,20 @@
 # Data types
+Trong JavaScript, trừ `undefined`, toàn bộ các kiểu còn lại đều là `object`. Các kiểu string, number, boolean lần lượt là object dạng String, Number, Boolean. Mảng là object dạng Array, hàm là object dạng Function.
 
-## Primitive types:
-- string
-- number
-- boolean
-- undefined
-- null
-- Symbol (new in ECMAScript 6)
+## Có 2 kiểu dữ liệu:
+### Primitive Types:
+  - Boolean
+  - Null
+  - Undefined
+  - Number
+  - String
+  - Symbol (new in ECMAScript 6)
+### Reference Types:
+  - Object
+  - Array
+  - Function
 
-## Complex types:
-- function
-- object
-
-### Difference Between `Undefined` and `Null`
+### Sự khác nhau giữa `Undefined` và `Null`
 ```js
 typeof undefined           // undefined
 typeof null                // object
