@@ -1,5 +1,38 @@
 # Object
 
+- Có 2 cách để khởi tạo object là sử dụng:
+    - Object literal
+    - Constructor function
+
+Ví dụ:
+```js
+// Object literal
+const person = {
+  firstName: 'Dai',
+  lastName: 'Nguyen',
+  showName: function() {
+    console.log(`${this.firstName} ${this.lastName}`)
+  }
+} // object này có prototype là Object.prototype
+
+console.log(person.constructor.name) // "Object"
+
+// Constructor function
+function Person(_firstName, _lastName) {
+  this.firstName = _firstName
+  this.lastName = _lastName
+  this.showName = function() {
+    console.log(`${this.firstName} ${this.lastName}`)
+  }
+}
+
+const otherPerson = new Person('Dai', 'Nguyen')
+// object này có prototype là Person.prototype
+// Prototype mới: Person.prototype được tạo ra
+// Person.prototype kế thừa Object.prototype
+console.log(otherPerson.constructor.name) // "Person"
+```
+Ví dụ khác
 ```js
     function Fruit(_name, _color) {
       this.name = _name;
