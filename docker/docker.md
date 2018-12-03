@@ -1,5 +1,4 @@
 # Docker
-
 - Là một nền tảng mở dành cho các lập trình viên, quản trị hệ thống dùng để xây dựng, vận chuyển và chạy các ứng dụng phân tán
 
 ## Docker bao gồm các thành phần chính
@@ -37,7 +36,6 @@
 > - Các files và settings được sử dụng trong container được lưu, sử dụng lại, gọi chung là images của docker
 
 ## Các câu lệnh trong Docker
-
 | Lệnh | Ý nghĩa |
 |--------|------|
 | `docker pull {image_name}` | Pull một image từ Docker Hub |
@@ -66,7 +64,6 @@
 > - Từ những câu lệnh trong Dockerfile, Docker có thể thực hiện `đóng gói` một `image` theo yêu cầu tùy biến của riêng bạn
 
 ### Các lệnh thông dụng trong Dockerfile
-
 | Lệnh | Ý nghĩa |
 |--------|------|
 | ENV | Định nghĩa biến môi trường trong `Container` |
@@ -86,7 +83,6 @@
 ### Cách sử dụng Dockerfile
 
 #### Step 1. Build docker image từ Dockerfile
-
 ```
 // Cú pháp
 docker build -t <image_name> .
@@ -98,7 +94,6 @@ docker build -t ubuntu_nginx .
 - `.` cho biết file Dockerfile đang ở cùng đường dẫn
 
 #### Step 2. Tạo container từ image
-
 ```
 // Cú pháp
 docker run -v <forder_in_computer>:<forder_in_container> -p <port_in_computer>:<port_in_container> -it <image_name>
@@ -111,7 +106,6 @@ docker run -p 9000:80 -it nginx
 - `-t` chạy container và mở terminal bằng /bin/bash
 
 ## Volume
-
 - Được dùng để chia sẻ dữ liệu cho container
 > **Ta dùng Docker Volume khi nào ?**
 > - Sử dụng volume để gắn (mount) một thư mục nào đó trong host với container
@@ -120,12 +114,10 @@ docker run -p 9000:80 -it nginx
 > - Backup và Restore volume
 
 ## Docker Compose
-
 - Là công cụ giúp định nghĩa và khởi chạy `multi-container Docker applications`
 > - Trong Compose, chúng ta sử dụng Compose file để cấu hình application's services. Chỉ với một câu lệnh, lập trình viên có thể dễ dàng create và start toàn bộ các services phục vụ cho việc chạy ứng dụng
 
 ### Các câu lệnh trong Docker Compose
-
 | Lệnh | Ý nghĩa |
 |--------|------|
 | `docker-compose up` | Tạo và khởi động containers |
