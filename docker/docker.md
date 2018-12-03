@@ -61,9 +61,9 @@
 - Là một file dạng text (không có đuôi) chứa tập hợp các lệnh để Docker có thể đọc và thực hiện để đóng gói một image theo yêu cầu người dùng
 
 > **Giải thích thêm**
-> - Giúp thiết lập `cấu trúc` cho `Docker image`
-> - Quy định `Docker image` được khởi tạo `từ đâu`, gồm `những gì` trong đó.
-> - Từ những câu lệnh trong Dockerfile, Docker có thể thực hiện `đóng gói` một `Docker image` theo yêu cầu tùy biến của riêng bạn.
+> - Giúp thiết lập `cấu trúc` cho `image`
+> - Quy định `image` được khởi tạo `từ đâu`, gồm `những gì` trong đó
+> - Từ những câu lệnh trong Dockerfile, Docker có thể thực hiện `đóng gói` một `image` theo yêu cầu tùy biến của riêng bạn
 
 ### Các lệnh thông dụng trong Dockerfile
 
