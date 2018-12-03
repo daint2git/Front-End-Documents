@@ -70,6 +70,7 @@ Lưu ý:
 
 ### Build docker image từ Dockerfile
 
+Cú pháp:
 ```
 docker build -t <image_name> .
 ```
@@ -86,9 +87,9 @@ docker build -t ubuntu_nginx .
 docker run -v <forder_in_computer>:<forder_in_container> -p <port_in_computer>:<port_in_container> -it <image_name>
 ```
 Trong đó:
-- -v : Thể hiện việc mount volume, dữ liệu từ thư mục từ máy thật có thể được truy cập từ thư mục của máy ảo.
-- -p: Cổng mạng từ máy thật để dẫn tới cổng mạng của máy ảo đang chạy.
-- -t: Chạy container và mở terminal bằng /bin/bash
+- `-v` thể hiện việc mount volume, dữ liệu từ thư mục của máy thật có thể được truy cập từ thư mục của máy ảo.
+- `-p` cổng mạng từ máy thật để dẫn tới cổng mạng của máy ảo đang chạy.
+- `-t` chạy container và mở terminal bằng /bin/bash.
 
 Ví dụ vào localhost mặc định của nginx:
 ```
@@ -97,5 +98,4 @@ docker run -p 9000:80 -it nginx
 
 # Docker Hub
 
-- Nơi lưu trữ và chia sẻ các image của Docker, nhưng không chỉ có vậy
-
+- Nơi lưu trữ và chia sẻ các `image` của Docker và còn nhiều tính năng khác.
