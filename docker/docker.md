@@ -70,9 +70,9 @@ FROM ubuntu:16.04
 
 | Lệnh | Ý nghĩa |
 |--------|------|
-| RUN | thực thi một câu lệnh nào đó trong quá trình `build image`. |
-| CMD | thực thi một câu lệnh trong quá trình bật `container`. |
-| ENTRYPOINT | thực thi một số câu lệnh trong quá trình bật `container`, những câu lệnh này sẽ được viết trong file `.sh`. |
+| RUN <command> | thực thi một câu lệnh nào đó trong quá trình `build image` |
+| CMD <command> | thực thi một câu lệnh trong quá trình bật `container` |
+| ENTRYPOINT <command> | thực thi một số câu lệnh trong quá trình bật `container`, những câu lệnh này sẽ được viết trong file `.sh` |
 
 
 > **Lưu ý**
@@ -84,10 +84,10 @@ FROM ubuntu:16.04
 | Lệnh | Ý nghĩa |
 |--------|------|
 | ENV <variable_name> | Định nghĩa biến môi trường trong `Container` |
-| EXPOSE | `Container` sẽ lắng nghe trên các cổng mạng được chỉ định khi chạy |
+| EXPOSE <port> | `Container` sẽ lắng nghe trên các cổng mạng được chỉ định khi chạy |
 | ADD <src> <dest> | Copy `file, thư mục, remote file` vào một ví trí nào đó trên `Container` (khai báo bằng dest) |
-| COPY | Copy `file, thư mục` từ host machine vào `Image`. Có thể sử dụng url cho tập tin cần copy |
-| WORKDIR | Định nghĩa directory cho `CMD` |
+| COPY <src> <dest> | Copy `file, thư mục` từ host machine vào `Image`. Có thể sử dụng url cho tập tin cần copy |
+| WORKDIR <folder> | Định nghĩa directory cho `CMD` |
 | VOLUME | Mount thư mục từ máy host vào container. |
 
 ## Cách sử dụng Dockerfile
