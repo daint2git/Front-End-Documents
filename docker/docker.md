@@ -2,18 +2,32 @@
 
 - có hai khái niệm chính cần hiểu, đó là `image` và `container`
 
-## Container
+## Docker bao gồm các thành phần chính
+- `Docker Engine` dùng để tạo ra Docker image và chạy Docker container.
+- `Docker Hub` dịch vụ lưu trữ giúp chứa các Docker image.
 
-- Tương tự như một máy ảo, xuất hiện khi mình khởi chạy `image`.
-- Tốc độ khởi chạy container nhanh hơn tốc độ khởi chạy máy ảo rất nhiều và bạn có thể thoải mái chạy 4,5 container mà không sợ treo máy.
-- Các files và settings được sử dụng trong container được lưu, sử dụng lại, gọi chung là images của docker.
+## Docker mang lại những giá trị gì
+- Với Docker, chúng ta có thể đóng gói mọi ứng dụng vd như webapp, backend, MySQL, BigData…thành các containers và có thể chạy ở `hầu hết` các môi trường vd như Linux, Mac, Window…
+- Docker Containers có một API cho phép quản trị các container từ bên ngoài. Giúp cho chúng ta có thể dễ dàng quản lí, thay đổi, chỉnh sửa các container.
+- Hầu hết các ứng dụng Linux có thể chạy với Docker Containers.
+- Docker Containers có tốc độ chạy nhanh hơn hẳn các VMs truyền thống (theo kiểu Hypervisor). Điều này là một ưu điểm nổi bật nhất của Docker.
 
 ## Image
+- Một dạng tập hợp các tệp của ứng dụng, được tạo ra bởi Docker engine. Nội dung của các Docker image sẽ không bị thay đổi khi di chuyển. Docker image được dùng để chạy các Docker container.
 
-- Tương tự như file .gho để ghost win mà mấy ông cài win dạo hay dùng.
-- Image này không phải là một file vật lý mà nó chỉ được chứa trong Docker.
-- Một image bao gồm hệ điều hành (Windows, CentOS, Ubuntu, …) và các môi trường lập trình được cài sẵn (httpd, mysqld, nginx, python, git, …).
-- Docker hub là nơi lưu giữ và chia sẻ các file images này (hiện có khoảng 300.000 images)
+> **Giải thích thêm**
+> - Tương tự như file .gho để ghost win mà mấy ông cài win dạo hay dùng.
+> - Image này không phải là một file vật lý mà nó chỉ được chứa trong Docker.
+> - Một image bao gồm hệ điều hành (Windows, CentOS, Ubuntu, …) và các môi trường lập trình được cài sẵn (httpd, mysqld, nginx, python, git, …).
+> - Docker hub là nơi lưu giữ và chia sẻ các file images này (hiện có khoảng 300.000 images)
+
+## Container
+- Một dạng runtime của các Docker image, dùng để làm môi trường chạy ứng dụng.
+
+> **Giải thích thêm**
+> - Tương tự như một máy ảo, xuất hiện khi mình khởi chạy `image`.
+> - Tốc độ khởi chạy container nhanh hơn tốc độ khởi chạy máy ảo rất nhiều và bạn có thể thoải mái chạy 4,5 container mà không sợ treo máy.
+> - Các files và settings được sử dụng trong container được lưu, sử dụng lại, gọi chung là images của docker.
 
 ## Các câu lệnh trong Docker
 
@@ -95,7 +109,3 @@ Ví dụ vào localhost mặc định của nginx:
 ```
 docker run -p 9000:80 -it nginx
 ```
-
-# Docker Hub
-
-- Nơi lưu trữ và chia sẻ các `image` của Docker và còn nhiều tính năng khác.
