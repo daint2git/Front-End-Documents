@@ -1,38 +1,40 @@
 # Docker
 
-- có hai khái niệm chính cần hiểu, đó là `image` và `container`
+- Là một nền tảng mở dành cho các lập trình viên, quản trị hệ thống dùng để xây dựng, vận chuyển và chạy các ứng dụng phân tán
 
 ## Docker bao gồm các thành phần chính
-- `Docker Engine` dùng để tạo ra Docker image và chạy Docker container.
-- `Docker Hub` dịch vụ lưu trữ giúp chứa các Docker image.
+- `Docker Engine`
+  - Là thành phần chính của Docker, như một công cụ để đóng gói ứng dụng
+  - Dùng để tạo ra Docker image và chạy Docker container
+- `Docker Hub` là dịch vụ cloud để chia sẻ ứng dụng và tự động hóa chuỗi các công việc liên tục, có thể thao tác pull/push với các images
 
 ## Docker mang lại những giá trị gì
 - Với Docker, chúng ta có thể đóng gói mọi ứng dụng vd như webapp, backend, MySQL, BigData…thành các containers và có thể chạy ở `hầu hết` các môi trường vd như Linux, Mac, Window…
-- Docker Containers có một API cho phép quản trị các container từ bên ngoài. Giúp cho chúng ta có thể dễ dàng quản lí, thay đổi, chỉnh sửa các container.
-- Hầu hết các ứng dụng Linux có thể chạy với Docker Containers.
-- Docker Containers có tốc độ chạy nhanh hơn hẳn các VMs truyền thống (theo kiểu Hypervisor). Điều này là một ưu điểm nổi bật nhất của Docker.
+- Docker Containers có một API cho phép quản trị các container từ bên ngoài. Giúp cho chúng ta có thể dễ dàng quản lí, thay đổi, chỉnh sửa các container
+- Hầu hết các ứng dụng Linux có thể chạy với Docker Containers
+- Docker Containers có tốc độ chạy nhanh hơn hẳn các VMs truyền thống (theo kiểu Hypervisor). Điều này là một ưu điểm nổi bật nhất của Docker
 
 ## Image
-- Là một dạng tập hợp các tệp của ứng dụng, được tạo ra bởi `Docker engine`.
-- Nội dung của các `Docker image` sẽ không bị thay đổi khi di chuyển.
-- Là một template chỉ cho phép đọc.
-- Docker image được dùng để tạo các `Docker container`.
+- Là một dạng tập hợp các tệp của ứng dụng, được tạo ra bởi `Docker engine`
+- Nội dung của các `Docker image` sẽ không bị thay đổi khi di chuyển
+- Là một template chỉ cho phép đọc
+- Docker image được dùng để tạo các `Docker container`
 
 > **Giải thích thêm**
-> - Tương tự như file .gho để ghost win mà mấy ông cài win dạo hay dùng.
-> - Image này không phải là một file vật lý mà nó chỉ được chứa trong Docker.
-> - Một image bao gồm hệ điều hành (Windows, CentOS, Ubuntu, …) và các môi trường lập trình được cài sẵn (httpd, mysqld, nginx, python, git, …).
-> - Docker hub là nơi lưu giữ và chia sẻ các file images này (hiện có khoảng 300.000 images), có thể download Docker images của người khác tại đây.
+> - Tương tự như file .gho để ghost win mà mấy ông cài win dạo hay dùng
+> - Image này không phải là một file vật lý mà nó chỉ được chứa trong Docker
+> - Một image bao gồm hệ điều hành (Windows, CentOS, Ubuntu, …) và các môi trường lập trình được cài sẵn (httpd, mysqld, nginx, python, git, …)
+> - Docker hub là nơi lưu giữ và chia sẻ các Docker image (hiện có khoảng 300.000 images)
 
 ## Container
-- Là một dạng runtime của các `Docker image`, dùng để làm môi trường chạy ứng dụng.
-- Một `Docker container` giữ mọi thứ chúng ta cần để chạy một app.
-- `Docker container` có thể có các trạng thái `run, started, stopped, moved và deleted`.
+- Là một dạng runtime của các `Docker image`, dùng để làm môi trường chạy ứng dụng
+- Hoạt động giống như một thư mục (directory), chứa tất cả những thứ cần thiết để một ứng dụng có thể chạy được
+- `Docker container` có thể có các trạng thái `run, started, stopped, moved và deleted`
 
 > **Giải thích thêm**
-> - Tương tự như một máy ảo, xuất hiện khi mình khởi chạy `image`.
-> - Tốc độ khởi chạy container nhanh hơn tốc độ khởi chạy máy ảo rất nhiều và bạn có thể thoải mái chạy 4,5 container mà không sợ treo máy.
-> - Các files và settings được sử dụng trong container được lưu, sử dụng lại, gọi chung là images của docker.
+> - Tương tự như một máy ảo, xuất hiện khi mình khởi chạy `image`
+> - Tốc độ khởi chạy container nhanh hơn tốc độ khởi chạy máy ảo rất nhiều và bạn có thể thoải mái chạy 4,5 container mà không sợ treo máy
+> - Các files và settings được sử dụng trong container được lưu, sử dụng lại, gọi chung là images của docker
 
 ## Các câu lệnh trong Docker
 
@@ -56,7 +58,7 @@
 | `docker start` | Bắt đầu lại container và khởi động cho container chạy cho đến lần xử lý dừng tiếp theo |
 
 ## Dockerfile
-- Là một file dạng text, không có đuôi và chứa một tập các câu lệnh để tạo một Image trong Docker.
+- Là một file dạng text (không có đuôi) chứa tập hợp các lệnh để Docker có thể đọc và thực hiện để đóng gói một image theo yêu cầu người dùng
 
 > **Giải thích thêm**
 > - Giúp thiết lập `cấu trúc` cho `Docker image`
