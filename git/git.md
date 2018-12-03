@@ -1,5 +1,19 @@
 # git
 
+Git là một trong những Hệ thống Quản lý Phiên bản Phân tán, được phát triển bởi Linus Torvalds vào năm 2005, vốn được phát triển nhằm quản lý mã nguồn (source code) của Linux. Trên Git, ta có thể lưu trạng thái của file dưới dạng lịch sử cập nhật. Vì thế, có thể đưa file đã chỉnh sửa một lần về trạng thái cũ hay có thể biết được file đã được chỉnh sửa chỗ nào.
+
+## repository and branch
+- Repository: Repository (nhà kho) hay được gọi tắt là `Repo` đơn giản là nơi chứa/cơ sở dữ liệu (database) tất cả những thông tin cần thiết để duy trì và quản lý các sửa đổi và lịch sử của dự án.
+- Repository có các loại
+  - Remote repository: Là repository để chia sẻ giữa nhiều người và bố trí trên server chuyên dụng.
+  - Local repository: Là repository bố trí trên máy local của bạn, dành cho một người dùng sử dụng.
+- Branch: Là phân nhánh ghi lại luồng thay đổi của lịch sử, các hoạt động trên mỗi branch sẽ không ảnh hưởng lên các branch khác nên có thể tiến hành nhiều thay đổi đồng thời trên một repository, giúp giải quyết được nhiều nhiệm vụ cùng lúc.
+- Branch có các loại
+  - Local branch: Là nhánh ở local, tồn tại trên máy local của bạn và tất nhiên chỉ bạn mới có thể nhìn thấy.
+  - Local tracking branch: Là một nhánh local để theo dõi các nhánh khác. Điều này để cam kết rằng bạn có thể push lên/pull về các commit các nhánh khác.
+  - Remote branch: là branch lưu ở remote. Branch này có thể fetch về local nhưng không tạo thêm branch ở local.
+  - Remote tracking branch: là một bản sao cục bộ (local) của một nhánh remote.
+
 ## init
 - Tạo một `local repository` tại `working directory`
 ```
@@ -73,7 +87,7 @@ git reset --soft HEAD^
 ```
 
 ## revert
-- Tạo ra một commit mới đảo ngược lại những thay đổi trong commit được chỉ định
+- Tạo commit đảo ngược commit có commit đã chọn, commit chỉ định bị xoá bỏ, các commit mới hơn vẫn được giữ nguyên
 ```
 git revert <commit hash code>
 ```
@@ -117,9 +131,6 @@ git push <tên remote repository> <tên remote branch>
 
 ## branch
 - Branch mặc định là `master`
-- Có 2 loại branch:
-  - `local branch`: branch nằm trên máy tính của chúng ta
-  - `remote branch`: branch nằm trên máy chủ từ xa
 - Liệt kê danh sách branch
 ```
 git branch
@@ -128,9 +139,19 @@ git branch
 ```
 git branch <tên branch>
 ```
-- Xóa branch
+- Xóa một branch ở phía local
 ```
+git branch -d <tên branch>
+or
 git branch -D <tên branch>
+or
+git branch --delete <tên branch>
+```
+- Xóa một branch remote
+```
+git push --delete <tên remote> <tên branch>
+or
+git push <tên remote> --delete <tên branch>
 ```
 
 ## checkout
@@ -156,8 +177,10 @@ git merge <tên branch>
 - Gộp một vài commit thành một commit duy nhất
 ```
 git rebase -i <commit hash code>
+(với <commit hash code> là hash code của commit cuối cùng của nhóm cần gộp)
+or
+git rebase -i HEAD~<index>
 ```
-`Note:` với `commit hash code` là hash code của commit cuối cùng của nhóm cần gộp
 
 ## fetch
 - Tiến hành kéo các thay đổi từ trên `remote server` về `local`
@@ -203,11 +226,34 @@ git clean -f
 ```
 git clean -fd
 ```
+
+## stash
+- được sử dụng khi muốn lưu lại các thay đổi nhưng chưa commit, thường rất hữu dụng khi bạn muốn đổi sang 1 branch khác mà lại đang làm dở ở branch hiện tại.
+```
+// Xem danh sách stash
+git stash list [<options>]
+// Apply stash gần nhất và xóa stash đó
+git stash pop
+// Apply stash
+git stash apply stash@{<index>} 
+// Xem nội dung stash
+git stash show stash@{<index>}
+// Xóa stash
+git stash drop stash@{<index>}
+// Xóa toàn bộ stash
+git stash clear
+// Lưu toàn bộ nội dung công việc đang làm dở, sử dụng lệnh
+git stash save
+or
+git stash
+```
+
 ## How do I discard unstaged changes in Git?
 ```
 git clean -df
 git checkout -- .
 ```
+
 ## Revert đến commit trước (sau khi đã push lên git)
 ```
 # Reset the index to the desired commit
