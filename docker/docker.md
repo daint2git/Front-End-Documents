@@ -41,6 +41,8 @@
 | `docker pull {image_name}` | Pull một image từ Docker Hub |
 | `docker run --name {container_name} -p {host_port}:{container_port} -v {/host_path}:{/container_path} -it {image_name}` | Tạo mới một container, đồng thời khởi động với tùy chọn cổng và volume |
 | `docker images` | Liệt kê các images hiện có |
+| `docker images -a` | Liệt kê các images hiện có |
+| `docker images -q` | Liệt kê các images hiện có (Chỉ hiển thị số ID của các images) |
 | `docker rmi {image_id/name}` | Xóa một image |
 | `docker rmi $(docker images -q)` | Xóa các images hiện có |
 | `docker container ls` | Liệt kê các containers hiện có |
@@ -50,6 +52,8 @@
 | `docker rm $(docker ps -a -q)` | Xóa các containers hiện có |
 | `docker start {new_container_name}` | Khởi động một container |
 | `docker exec -it {new_container_name} /bin/bash` | Truy cập vào container đang chạy |
+| `docker run` | Thao tác đến các images đã tồn tại hoặc có thể truy xuất từ localhost, mỗi lần chạy command sẽ tạo ra một container mới tương ứng |
+| `docker start` | Bắt đầu lại container và khởi động cho container chạy cho đến lần xử lý dừng tiếp theo |
 
 ## Dockerfile
 - Là một file dạng text, không có đuôi và chứa một tập các câu lệnh để tạo một Image trong Docker.
@@ -118,3 +122,25 @@ Ví dụ vào localhost mặc định của nginx:
 ```
 docker run -p 9000:80 -it nginx
 ```
+
+### Docker Volume
+- Được dùng để chia sẻ dữ liệu cho container
+> **Ta dùng Docker Volume khi nào ?**
+> - Sử dụng volume để gắn (mount) một thư mục nào đó trong host với container
+> - Sử dụng volume để chia sẻ dữ liệu giữa host và container
+> - Sử dụng volume để chia sẽ dữ liệu giữa các container
+> - Backup và Restore volume
+
+### Docker Compose
+- Là công cụ giúp định nghĩa và khởi chạy `multi-container Docker applications`
+> - Trong Compose, chúng ta sử dụng Compose file để cấu hình application's services. Chỉ với một câu lệnh, lập trình viên có thể dễ dàng create và start toàn bộ các services phục vụ cho việc chạy ứng dụng
+
+#### Các câu lệnh trong Docker Compose
+
+| Lệnh | Ý nghĩa |
+|--------|------|
+| `docker-compose up` | Tạo và khởi động containers |
+| `docker-compose build` | Build hoặc rebuild services |
+| `docker-compose config` | Xác nhận hoặc hiển thị file config Compose |
+| `docker-compose rm` | Loại bỏ, ngừng containers |
+
