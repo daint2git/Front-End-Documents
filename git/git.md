@@ -42,24 +42,25 @@ git clone https://github.com/{user}/{repository}.git .
 ```
 
 ## status
-- Kiểm tra trạng thái của các file tại `working directory`
 ```
+// Kiểm tra trạng thái của các file tại `working directory`
 git status
 ```
 
 ## add
-- Thêm một file
 ```
-gid add <tên file>
-```
-- Thêm tất cả file
-```
-git add --all (hoặc .)
+// Thêm một file
+git add <tên file>
+
+// Thêm tất cả file
+git add --all
+or
+git add .
 ```
 
 ## reset
-- Trở về trạng thái ban đầu trước khi chỉnh sửa của một file tại local
 ```git
+// Trở về trạng thái ban đầu trước khi chỉnh sửa của một file tại local
 git reset <tên file>
 ```
 - Trở về trạng thái của các file tại lần commit chỉ định:
@@ -87,45 +88,43 @@ git reset --soft HEAD^
 ```
 
 ## revert
-- Tạo commit đảo ngược commit có commit đã chọn, commit chỉ định bị xoá bỏ, các commit mới hơn vẫn được giữ nguyên
 ```
+// Tạo commit đảo ngược commit có commit đã chọn, commit chỉ định bị xoá bỏ, các commit mới hơn vẫn được giữ nguyên
 git revert <commit hash code>
 ```
 
 ## commit
-- Thêm mới một commit
 ```
+// Thêm mới một commit
 git commit -m "<commit message>"
-```
-- Đổi tên `commit message` của commit cuối
-```
+
+// Đổi tên `commit message` của commit cuối
 git commit --amend -m "<new commit message>"
 ```
 
 ## log
-- Xem lịch sử commit
 ```
+// Xem lịch sử commit
 git log
-```
-- Xem lịch sử commit (với mỗi commit trên 1 dòng)
-```
+
+// Xem lịch sử commit (với mỗi commit trên 1 dòng)
 git log --oneline
-```
-- Xem lịch sử commit (cho 2 lần commits gần nhất)
-```
+
+// Xem lịch sử commit (cho 2 lần commits gần nhất)
 git log -2
 ```
 
 ## show
-- Xem nội dung của một commit được chỉ định
 ```
+// Xem nội dung của một commit được chỉ định
 git show <commit hash code>
 ```
 
 ## push
-- Đẩy các commit lên `remote branch`
 ```
+// Đẩy các commit lên `remote branch`
 git push <tên remote repository> <tên remote branch>
+
 // tên remote repository thường là origin
 ```
 
@@ -155,12 +154,11 @@ git push <tên remote> --delete <tên branch>
 ```
 
 ## checkout
-- Chuyển `branch` khác
 ```
+// Chuyển `branch` khác
 git checkout <tên branch cần chuyển qua>
-```
-- Nếu bạn chưa có branch cần chuyển, bạn cũng có thể vừa tạo vừa chuyển qua chỉ với 1 lệnh
-```
+
+// Nếu bạn chưa có branch cần chuyển, bạn cũng có thể vừa tạo vừa chuyển qua chỉ với 1 lệnh
 git checkout -b <tên branch cần chuyển qua>
 ```
 
