@@ -65,26 +65,7 @@
 > - Quy định `Docker image` được khởi tạo `từ đâu`, gồm `những gì` trong đó.
 > - Từ những câu lệnh trong Dockerfile, Docker có thể thực hiện `đóng gói` một `Docker image` theo yêu cầu tùy biến của riêng bạn.
 
-## Cách viết Dockerfile
-
-### Thiết lập image gốc
-Ví dụ:
-```
-FROM ubuntu:16.04
-```
-### Cài đặt ứng dụng
-
-| Lệnh | Ý nghĩa |
-|--------|------|
-| RUN | thực thi một câu lệnh nào đó trong quá trình `build image` |
-| CMD | thực thi một câu lệnh trong quá trình bật `container` |
-| ENTRYPOINT | thực thi một số câu lệnh trong quá trình bật `container`, những câu lệnh này sẽ được viết trong file `.sh` |
-
-> **Lưu ý**
-> - Mỗi Dockerfile `chỉ có` một câu lệnh `CMD`, nếu như có `nhiều hơn` thì chỉ có câu lệnh `cuối cùng` được sử dụng
-> - Một `câu hỏi` đặt ra là nếu tôi muốn khởi động `nhiều ứng dụng` khi bật container thì sao ? Lúc đó hãy nghĩ tới `ENTRYPOINT`
-
-### Cấu hình
+### Các lệnh thông dụng trong Dockerfile
 
 | Lệnh | Ý nghĩa |
 |--------|------|
@@ -94,38 +75,43 @@ FROM ubuntu:16.04
 | COPY | Copy `file, thư mục` từ host machine vào `Image`. Có thể sử dụng url cho tập tin cần copy |
 | WORKDIR | Định nghĩa directory cho `CMD` |
 | VOLUME | Mount thư mục từ máy host vào container. |
+| RUN | thực thi một câu lệnh nào đó trong quá trình `build image` |
+| CMD | thực thi một câu lệnh trong quá trình bật `container` |
+| ENTRYPOINT | thực thi một số câu lệnh trong quá trình bật `container`, những câu lệnh này sẽ được viết trong file `.sh` |
 
-## Cách sử dụng Dockerfile
+> **Lưu ý**
+> - Mỗi Dockerfile `chỉ có` một câu lệnh `CMD`, nếu như có `nhiều hơn` thì chỉ có câu lệnh `cuối cùng` được sử dụng
+> - Một `câu hỏi` đặt ra là nếu tôi muốn khởi động `nhiều ứng dụng` khi bật container thì sao ? Lúc đó hãy nghĩ tới `ENTRYPOINT`
 
-### Build docker image từ Dockerfile
+### Cách sử dụng Dockerfile
 
-Cú pháp:
+#### Step 1. Build docker image từ Dockerfile
+
 ```
+// Cú pháp
 docker build -t <image_name> .
-```
-Ví dụ:
-```
+
+// Ví dụ
 docker build -t ubuntu_nginx .
 ```
 - `-t` giúp bạn có thể chọn tên cho image bạn tạo ra
 - `.` cho biết file Dockerfile đang ở cùng đường dẫn
 
-### Tạo container từ image
+#### Step 2. Tạo container từ image
 
 ```
+// Cú pháp
 docker run -v <forder_in_computer>:<forder_in_container> -p <port_in_computer>:<port_in_container> -it <image_name>
-```
-Trong đó:
-- `-v` thể hiện việc mount volume, dữ liệu từ thư mục của máy thật có thể được truy cập từ thư mục của máy ảo.
-- `-p` cổng mạng từ máy thật để dẫn tới cổng mạng của máy ảo đang chạy.
-- `-t` chạy container và mở terminal bằng /bin/bash.
 
-Ví dụ vào localhost mặc định của nginx:
-```
+// Ví dụ vào localhost mặc định của nginx
 docker run -p 9000:80 -it nginx
 ```
+- `-v` thể hiện việc mount volume, dữ liệu từ thư mục của máy thật có thể được truy cập từ thư mục của máy ảo
+- `-p` cổng mạng từ máy thật để dẫn tới cổng mạng của máy ảo đang chạy
+- `-t` chạy container và mở terminal bằng /bin/bash
 
-### Docker Volume
+## Volume
+
 - Được dùng để chia sẻ dữ liệu cho container
 > **Ta dùng Docker Volume khi nào ?**
 > - Sử dụng volume để gắn (mount) một thư mục nào đó trong host với container
@@ -133,11 +119,12 @@ docker run -p 9000:80 -it nginx
 > - Sử dụng volume để chia sẽ dữ liệu giữa các container
 > - Backup và Restore volume
 
-### Docker Compose
+## Docker Compose
+
 - Là công cụ giúp định nghĩa và khởi chạy `multi-container Docker applications`
 > - Trong Compose, chúng ta sử dụng Compose file để cấu hình application's services. Chỉ với một câu lệnh, lập trình viên có thể dễ dàng create và start toàn bộ các services phục vụ cho việc chạy ứng dụng
 
-#### Các câu lệnh trong Docker Compose
+### Các câu lệnh trong Docker Compose
 
 | Lệnh | Ý nghĩa |
 |--------|------|
