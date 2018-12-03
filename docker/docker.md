@@ -9,7 +9,7 @@
 - `Docker Hub` là dịch vụ cloud để chia sẻ ứng dụng và tự động hóa chuỗi các công việc liên tục, có thể thao tác pull/push với các images
 
 ## Docker mang lại những giá trị gì
-- Với Docker, chúng ta có thể đóng gói mọi ứng dụng vd như webapp, backend, MySQL, BigData…thành các containers và có thể chạy ở `hầu hết` các môi trường vd như Linux, Mac, Window…
+- Có thể đóng gói mọi ứng dụng vd như webapp, backend, MySQL, BigData…thành các containers và có thể chạy ở `hầu hết` các môi trường vd như Linux, Mac, Window…
 - Docker Containers có một API cho phép quản trị các container từ bên ngoài. Giúp cho chúng ta có thể dễ dàng quản lí, thay đổi, chỉnh sửa các container
 - Hầu hết các ứng dụng Linux có thể chạy với Docker Containers
 - Docker Containers có tốc độ chạy nhanh hơn hẳn các VMs truyền thống (theo kiểu Hypervisor). Điều này là một ưu điểm nổi bật nhất của Docker
