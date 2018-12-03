@@ -13,16 +13,21 @@
 - Docker Containers có tốc độ chạy nhanh hơn hẳn các VMs truyền thống (theo kiểu Hypervisor). Điều này là một ưu điểm nổi bật nhất của Docker.
 
 ## Image
-- Một dạng tập hợp các tệp của ứng dụng, được tạo ra bởi Docker engine. Nội dung của các Docker image sẽ không bị thay đổi khi di chuyển. Docker image được dùng để chạy các Docker container.
+- Là một dạng tập hợp các tệp của ứng dụng, được tạo ra bởi `Docker engine`.
+- Nội dung của các `Docker image` sẽ không bị thay đổi khi di chuyển.
+- Là một template chỉ cho phép đọc.
+- Docker image được dùng để tạo các `Docker container`.
 
 > **Giải thích thêm**
 > - Tương tự như file .gho để ghost win mà mấy ông cài win dạo hay dùng.
 > - Image này không phải là một file vật lý mà nó chỉ được chứa trong Docker.
 > - Một image bao gồm hệ điều hành (Windows, CentOS, Ubuntu, …) và các môi trường lập trình được cài sẵn (httpd, mysqld, nginx, python, git, …).
-> - Docker hub là nơi lưu giữ và chia sẻ các file images này (hiện có khoảng 300.000 images)
+> - Docker hub là nơi lưu giữ và chia sẻ các file images này (hiện có khoảng 300.000 images), có thể download Docker images của người khác tại đây.
 
 ## Container
-- Một dạng runtime của các Docker image, dùng để làm môi trường chạy ứng dụng.
+- Là một dạng runtime của các `Docker image`, dùng để làm môi trường chạy ứng dụng.
+- Một `Docker container` giữ mọi thứ chúng ta cần để chạy một app.
+- `Docker container` có thể có các trạng thái `run, started, stopped, moved và deleted`.
 
 > **Giải thích thêm**
 > - Tương tự như một máy ảo, xuất hiện khi mình khởi chạy `image`.
@@ -47,9 +52,12 @@
 | `docker exec -it {new_container_name} /bin/bash` | Truy cập vào container đang chạy |
 
 ## Dockerfile
-- là một file dạng text, không có đuôi, giúp thiết lập `cấu trúc` cho `docker image` nhờ chứa một tập hợp các `câu lệnh`.
-- Từ những câu lệnh đó, Docker có thể thực hiện `đóng gói` một docker images theo yêu cầu tùy biến của riêng bạn.
-- Như vậy Dockerfile sẽ `quy định` Docker image được khởi tạo `từ đâu`, gồm `những gì` trong đó.
+- Là một file dạng text, không có đuôi và chứa một tập các câu lệnh để tạo một Image trong Docker.
+
+> **Giải thích thêm**
+> - Giúp thiết lập `cấu trúc` cho `Docker image`
+> - Quy định `Docker image` được khởi tạo `từ đâu`, gồm `những gì` trong đó.
+> - Từ những câu lệnh trong Dockerfile, Docker có thể thực hiện `đóng gói` một `Docker image` theo yêu cầu tùy biến của riêng bạn.
 
 ## Cách viết Dockerfile
 
@@ -62,21 +70,23 @@ FROM ubuntu:16.04
 
 | Lệnh | Ý nghĩa |
 |--------|------|
-| RUN | thực thi một câu lệnh nào đó trong quá trình build images. |
-| CMD | thực thi một câu lệnh trong quá trình bật container. |
-| ENTRYPOINT | thực thi một số câu lệnh trong quá trình start container, những câu lệnh này sẽ được viết trong file .sh. |
+| RUN | thực thi một câu lệnh nào đó trong quá trình `build image`. |
+| CMD | thực thi một câu lệnh trong quá trình bật `container`. |
+| ENTRYPOINT | thực thi một số câu lệnh trong quá trình bật `container`, những câu lệnh này sẽ được viết trong file `.sh`. |
 
-Lưu ý:
-- Mỗi Dockerfile `chỉ có` một câu lệnh CMD, nếu như có `nhiều hơn` một câu lệnh CMD thì chỉ có câu lệnh CMD `cuối cùng` được sử dụng.
-- Một `câu hỏi` đặt ra là nếu tôi muốn khởi động `nhiều ứng dụng` khi start container thì sao, lúc đó hay nghĩ tới `ENTRYPOINT`
+
+> **Lưu ý**
+> - Mỗi Dockerfile `chỉ có` một câu lệnh `CMD`, nếu như có `nhiều hơn` thì chỉ có câu lệnh `cuối cùng` được sử dụng
+> - Một `câu hỏi` đặt ra là nếu tôi muốn khởi động `nhiều ứng dụng` khi bật container thì sao ? Lúc đó hãy nghĩ tới `ENTRYPOINT`
 
 ### Cấu hình
 
 | Lệnh | Ý nghĩa |
 |--------|------|
-| EXPOSE | Container sẽ lắng nghe trên các cổng mạng được chỉ định khi chạy |
-| ADD | Copy file, thư mục, remote file thêm chúng vào filesystem của image. |
-| COPY | Copy file, thư mục từ host machine vào image. Có thể sử dụng url cho tập tin cần copy. |
+| ENV <variable_name> | Định nghĩa biến môi trường trong `Container` |
+| EXPOSE | `Container` sẽ lắng nghe trên các cổng mạng được chỉ định khi chạy |
+| ADD <src> <dest> | Copy `file, thư mục, remote file` vào một ví trí nào đó trên `Container` (khai báo bằng dest) |
+| COPY | Copy `file, thư mục` từ host machine vào `Image`. Có thể sử dụng url cho tập tin cần copy |
 | WORKDIR | Định nghĩa directory cho `CMD` |
 | VOLUME | Mount thư mục từ máy host vào container. |
 
@@ -92,8 +102,8 @@ Ví dụ:
 ```
 docker build -t ubuntu_nginx .
 ```
-- Tùy chọn `-t` giúp bạn có thể chọn tên cho image bạn tạo ra.
-- Tùy chọn `.` cho biết file Dockerfile đang ở cùng đường dẫn.
+- `-t` giúp bạn có thể chọn tên cho image bạn tạo ra
+- `.` cho biết file Dockerfile đang ở cùng đường dẫn
 
 ### Tạo container từ image
 
