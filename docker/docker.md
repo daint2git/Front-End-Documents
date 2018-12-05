@@ -15,9 +15,10 @@
 
 ## Image
 - Là một dạng tập hợp các tệp của ứng dụng, được tạo ra bởi `Docker engine`
-- Nội dung của các `Docker image` sẽ không bị thay đổi khi di chuyển
 - Là một template chỉ cho phép đọc
-- Docker image được dùng để tạo các `Docker container`
+- Chứa những tài nguyên có sẵn
+- Dùng để tạo các `Docker container`
+- Nội dung của các `Docker image` sẽ không bị thay đổi khi di chuyển
 
 > **Giải thích thêm**
 > - Tương tự như file .gho để ghost win mà mấy ông cài win dạo hay dùng
@@ -29,6 +30,7 @@
 - Là một dạng runtime của các `Docker image`, dùng để làm môi trường chạy ứng dụng
 - Hoạt động giống như một thư mục (directory), chứa tất cả những thứ cần thiết để một ứng dụng có thể chạy được
 - `Docker container` có thể có các trạng thái `run, started, stopped, moved và deleted`
+- Từ `container` thông qua lệnh `commit` để tạo thành `image mới`. Ví dụ `docker commit [CONTAINER ID] [new name image]`
 
 > **Giải thích thêm**
 > - Tương tự như một máy ảo, xuất hiện khi mình khởi chạy `image`
@@ -47,7 +49,8 @@
 | `docker rmi $(docker images -q)` | Xóa các images hiện có |
 | `docker container ls` | Liệt kê các containers hiện có |
 | `docker ps` | Liệt kê các container đang chạy |
-| `docker ps -a` | Liệt kê các container đã tắt |
+| `docker ps -a` | Liệt kê các container đã dừng |
+| `docker ps -l` | Liệt kê container đã dừng gần đây nhất |
 | `docker rm -f {container_id/name}` | Xóa một container |
 | `docker rm $(docker ps -a -q)` | Xóa các containers hiện có |
 | `docker start {new_container_name}` | Khởi động một container |
@@ -56,7 +59,7 @@
 | `docker start` | Bắt đầu lại container và khởi động cho container chạy cho đến lần xử lý dừng tiếp theo |
 
 ## Dockerfile
-- Là một file dạng text (không có đuôi) chứa tập hợp các lệnh để Docker có thể đọc và thực hiện để đóng gói một image theo yêu cầu người dùng
+- Là một file dạng text (không có đuôi) định nghĩa tất cả những thứ cần tạo ra trong image
 
 > **Giải thích thêm**
 > - Giúp thiết lập `cấu trúc` cho `image`
@@ -66,15 +69,18 @@
 ### Các lệnh thông dụng trong Dockerfile
 | Lệnh | Ý nghĩa |
 |--------|------|
-| ENV | Định nghĩa biến môi trường trong `Container` |
-| EXPOSE | `Container` sẽ lắng nghe trên các cổng mạng được chỉ định khi chạy |
-| ADD | Copy `file, thư mục, remote file` vào một ví trí nào đó trên `Container` |
-| COPY | Copy `file, thư mục` từ host machine vào `Image`. Có thể sử dụng url cho tập tin cần copy |
-| WORKDIR | Định nghĩa directory cho `CMD` |
-| VOLUME | Mount thư mục từ máy host vào container. |
+| FROM | Khai báo nguồn image nào ? (Tải nếu chưa có trong local registry) |
+| MAINTAINER | Khai báo tác giả của file |
+| USER | Xác định tài khoản người dùng mà container sẽ chạy dưới tên người dùng đó |
+| ENV | Định nghĩa biến môi trường trong container |
+| EXPOSE | container sẽ lắng nghe trên các cổng mạng được chỉ định khi chạy |
+| ADD | Copy `file, thư mục, remote file` vào một vị trí nào đó trên container |
+| COPY | Copy `file, thư mục` từ host vào image. Có thể sử dụng url cho tập tin cần copy |
+| WORKDIR | Định nghĩa thư mục container chạy |
+| VOLUME | Định nghĩa volumne giữa host với container hoặc giữa các container |
 | RUN | thực thi một câu lệnh nào đó trong quá trình `build image` |
-| CMD | thực thi một câu lệnh trong quá trình bật `container` |
-| ENTRYPOINT | thực thi một số câu lệnh trong quá trình bật `container`, những câu lệnh này sẽ được viết trong file `.sh` |
+| CMD | thực thi một câu lệnh nào đó trong quá trình `start container` |
+| ENTRYPOINT | thực thi một số câu lệnh nào đó trong quá trình `start container`, những câu lệnh này sẽ được viết trong file `.sh` |
 
 > **Lưu ý**
 > - Mỗi Dockerfile `chỉ có` một câu lệnh `CMD`, nếu như có `nhiều hơn` thì chỉ có câu lệnh `cuối cùng` được sử dụng
@@ -88,7 +94,7 @@
 docker build -t <image_name> .
 
 // Ví dụ
-docker build -t ubuntu_nginx .
+docker build -t ubuntu_test .
 ```
 - `-t` giúp bạn có thể chọn tên cho image bạn tạo ra
 - `.` cho biết file Dockerfile đang ở cùng đường dẫn
@@ -120,8 +126,12 @@ docker run -p 9000:80 -it nginx
 ### Các câu lệnh trong Docker Compose
 | Lệnh | Ý nghĩa |
 |--------|------|
-| `docker-compose up` | Tạo và khởi động containers |
-| `docker-compose build` | Build hoặc rebuild services |
-| `docker-compose config` | Xác nhận hoặc hiển thị file config Compose |
-| `docker-compose rm` | Loại bỏ, ngừng containers |
+| `docker-compose up` | Create and start containers |
+| `docker-compose down` | Stop and remove containers, networks, images, and volumes |
+| `docker-compose build` | Build or rebuild services |
+| `docker-compose exec` | Execute a command in a running container |
+| `docker-compose config` | Xác nhận hoặc hiển thị file config compose |
+| `docker-compose rm` | Remove stopped containers |
+| `docker-compose start` | Start services |
+| `docker-compose stop` | Stop services |
 
