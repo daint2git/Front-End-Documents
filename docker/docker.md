@@ -4,8 +4,9 @@
 ## Docker bao gồm các thành phần chính
 - `Docker Engine`
   - Là thành phần chính của Docker, như một công cụ để đóng gói ứng dụng
-  - Dùng để tạo ra Docker image và chạy Docker container
-- `Docker Hub` là dịch vụ cloud để chia sẻ ứng dụng và tự động hóa chuỗi các công việc liên tục, có thể thao tác pull/push với các images
+  - Dùng để tạo ra Docker image
+  - Dùng để chạy Docker container
+- `Docker Hub` cho phép lưu, sử dụng và tìm kiếm các image.
 
 ## Docker mang lại những giá trị gì
 - Có thể đóng gói mọi ứng dụng vd như webapp, backend, MySQL, BigData…thành các containers và có thể chạy ở `hầu hết` các môi trường vd như Linux, Mac, Window…
