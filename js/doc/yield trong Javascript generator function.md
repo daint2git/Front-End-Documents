@@ -1,4 +1,4 @@
-# function* và yield trong Javascript generator function
+# yield trong Javascript generator function
 
 ## function*
 
