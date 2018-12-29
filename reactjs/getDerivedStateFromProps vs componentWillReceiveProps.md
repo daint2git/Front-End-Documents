@@ -1,7 +1,10 @@
 # getDerivedStateFromProps vs componentWillReceiveProps
 
 ## getDerivedStateFromProps
-- Phương thức này được kích hoạt trên mỗi lần render.
+- Được kích hoạt trên mỗi lần render.
 
 ## componentWillReceiveProps
-- Phương thức này chỉ kích hoạt khi `parent component` gây ra re-render và không phải là kết quả của `setState` cục bộ.
+- Được kích hoạt trước khi `a mounted component` nhận props mới.
+- Được kích hoạt khi `parent component` gây ra re-render, ngay cả khi props không thay đổi.
+- Không được kích hoạt khi `setState` cục bộ.
+- Không được kích hoạt trong lần đầu tiên khi `mounting component`.
