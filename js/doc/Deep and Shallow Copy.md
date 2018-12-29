@@ -51,6 +51,19 @@ console.log(user) // { name: 'Nguyen Tran Dai', age: 26 }
 console.log(userClone) // { name: 'Nguyen Tran Dai da bi thay doi', age: 26 }
 ```
 
+Hoặc
+```js
+const user = {
+  name: 'Nguyen Tran Dai',
+  age: 26,
+}
+
+const userClone = { ...user, name: 'Nguyen Tran Dai da bi thay doi' }
+
+console.log(user) // { name: 'Nguyen Tran Dai', age: 26 }
+console.log(userClone) // { name: 'Nguyen Tran Dai da bi thay doi', age: 26 }
+```
+
 ### Object.assign
 ```js
 const user = {
@@ -89,7 +102,7 @@ console.log(userClone) // { name: 'Nguyen Tran Dai', age: 26, skill: { fe: [ 'js
 
 #### Kết quả mong muốn
 
-##### Spread operator
+> **Spread operator**
 ```js
 const user = {
   name: 'Nguyen Tran Dai',
@@ -134,7 +147,7 @@ console.log(user) // { name: 'Nguyen Tran Dai', age: 26, skill: { fe: [ 'html', 
 console.log(userClone) // { name: 'Nguyen Tran Dai', age: 26, skill: { fe: [ 'js' ], be: [ 'java' ] } }
 ```
 
-##### JSON.parse và JSON.stringify
+> **JSON.parse và JSON.stringify**
 ```js
 const user = {
   name: 'Nguyen Tran Dai',
