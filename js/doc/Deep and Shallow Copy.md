@@ -1,19 +1,67 @@
 # Deep and Shallow Copy
 
+## Shallow
 ```js
-let user = {
-  name: 'my name',
-  age: '23'
-};
+const user = {
+  name: 'Nguyen Tran Dai',
+  age: 26,
+}
 
 // shallow
-let userClone = user;
-userClone.name = 'my name was changed!'
+const userClone = user
 
-// deep
-let userClone = {
+userClone.name = 'Nguyen Tran Dai da bi thay doi'
+
+console.log(user) // { name: 'Nguyen Tran Dai da bi thay doi', age: 26 }
+console.log(userClone) // { name: 'Nguyen Tran Dai da bi thay doi', age: 26 }
+```
+
+## Deep
+
+### Value from original object  
+```js
+const user = {
+  name: 'Nguyen Tran Dai',
+  age: 26
+}
+
+const userClone = {
   name: user.name,
-  age: user.age
-};
-userClone.name = 'my name was changed too!';
+  age: user.age,
+}
+
+userClone.name = 'Nguyen Tran Dai da bi thay doi'
+
+console.log(user) // { name: 'Nguyen Tran Dai', age: 26 }
+console.log(userClone) // { name: 'Nguyen Tran Dai da bi thay doi', age: 26 }
+```
+
+### Spread operator
+```js
+const user = {
+  name: 'Nguyen Tran Dai',
+  age: 26,
+}
+
+const userClone = { ...user }
+
+userClone.name = 'Nguyen Tran Dai da bi thay doi'
+
+console.log(user) // { name: 'Nguyen Tran Dai', age: 26 }
+console.log(userClone) // { name: 'Nguyen Tran Dai da bi thay doi', age: 26 }
+```
+
+### Object.assign
+```js
+const user = {
+  name: 'Nguyen Tran Dai',
+  age: 26,
+}
+
+const userClone = Object.assign({}, user)
+
+userClone.name = 'Nguyen Tran Dai da bi thay doi'
+
+console.log(user) // { name: 'Nguyen Tran Dai', age: 26 }
+console.log(userClone) // { name: 'Nguyen Tran Dai da bi thay doi', age: 26 }
 ```
