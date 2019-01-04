@@ -1,6 +1,7 @@
 # Deep and Shallow Copy
 
-## Shallow
+## Copy object
+
 ```js
 const user = {
   name: 'Nguyen Tran Dai',
@@ -16,7 +17,7 @@ console.log(user) // { name: 'Nguyen Tran Dai da bi thay doi', age: 26 }
 console.log(userClone) // { name: 'Nguyen Tran Dai da bi thay doi', age: 26 }
 ```
 
-## Deep
+## Shallow copy
 
 ### Value from original object  
 ```js
@@ -78,6 +79,8 @@ userClone.name = 'Nguyen Tran Dai da bi thay doi'
 console.log(user) // { name: 'Nguyen Tran Dai', age: 26 }
 console.log(userClone) // { name: 'Nguyen Tran Dai da bi thay doi', age: 26 }
 ```
+
+## Deep copy
 
 ### Vấn đề với Object lồng nhau
 
