@@ -341,6 +341,12 @@ git reset --soft HEAD@{1}
 git commit -m "Revert to <commit>"
 ```
 
+```
+git reset --hard <commit id can den>
+
+git push --force
+```
+
 ## Please enter a commit message to explain why this merge is necessary, especially if it merges an updated upstream into a topic branch
 
 ```
