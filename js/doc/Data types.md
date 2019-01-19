@@ -41,7 +41,9 @@ console.log(b) // {c: 99}
 
 ### null
 - Là một giá trị đặc biệt
-- Đại diện cho `nothing`, `empty` hay `value unknown`
+- Có 2 đặc điểm:
+  - là một giá trị trống hoặc không tồn tại
+  - phải được chỉ định
 
 ```js
 let age = null
@@ -49,12 +51,14 @@ let age = null
 
 ### undefined
 - Là một giá trị đặc biệt
-- Giá trị không được chỉ định `(value is not assigned)`
+- Có nghĩa là một biến đã được khai báo nhưng chưa được gán một giá trị `(value is not assigned)`
 ```js
-let x
+let x // undefined
 // hoặc
 let x = undefined
-// Cả 2 cách khai báo thì biến x đều có giá trị là undefined
+
+const obj = {}
+console.log(obj.name) // undefined
 ```
 
 ### Sự khác nhau giữa `undefined` và `null`
