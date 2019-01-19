@@ -38,34 +38,35 @@ console.log(b) // {c: 99}
 
 ## Chú ý
 
-
 ### null
-- Là một giá trị đặc biệt
-- Có 2 đặc điểm:
-  - là một giá trị trống hoặc không tồn tại
-  - phải được chỉ định
-
+- Là một primitive type
+- Có giá trị đặc biệt
+- Có nghĩa là một biến đã được khai báo và gán một giá trị là `empty`, `nothing` `(value is assigned)`
 ```js
 let age = null
+
+typeof null // object (lỗi trong JS, đúng phải là kiểu null)
 ```
 
 ### undefined
-- Là một giá trị đặc biệt
+- Là một primitive type
+- Có giá trị đặc biệt
 - Có nghĩa là một biến đã được khai báo nhưng chưa được gán một giá trị `(value is not assigned)`
 ```js
 let x // undefined
 // hoặc
 let x = undefined
 
+typeof undefined // undefined
+
+null === undefined // false
+null == undefined // true
+```
+- Đối với Reference type, khi truy suất `key` hoặc `index` không tồn tại thì sẽ trả về `undefined`
+```js
 const obj = {}
 console.log(obj.name) // undefined
-```
 
-### Sự khác nhau giữa `undefined` và `null`
-```js
-typeof undefined           // undefined
-typeof null                // object (lỗi trong JS, đúng phải là kiểu null)
-
-null === undefined         // false
-null == undefined          // true
+const arr = [1, 2, 3]
+console.log(arr[3]) // undefined
 ```
