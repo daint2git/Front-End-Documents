@@ -43,15 +43,16 @@
 |--------|------|
 | `docker pull {image_name}` | Pull một image từ Docker Hub |
 | `docker run --name {container_name} -p {host_port}:{container_port} -v {/host_path}:{/container_path} -it {image_name}` | Tạo mới một container, đồng thời khởi động với tùy chọn cổng và volume |
-| `docker images` | Liệt kê các images hiện có |
-| `docker images -a` | Liệt kê các images hiện có |
-| `docker images -q` | Liệt kê các images hiện có (Chỉ hiển thị số ID của các images) |
+| `docker images` | Liệt kê tất cả các image hiện có |
+| `docker images -a` | Liệt kê tất cả các image hiện có |
+| `docker images -q` | Liệt kê tất cả các image hiện có (Chỉ hiển thị số ID của các image) |
 | `docker rmi {image_id/name}` | Xóa một image |
 | `docker rmi $(docker images -q)` | Xóa các images hiện có |
-| `docker container ls` | Liệt kê các containers hiện có |
+| `docker container ls` | Liệt kê các container đang chạy |
 | `docker ps` | Liệt kê các container đang chạy |
-| `docker ps -a` | Liệt kê các container đã dừng |
-| `docker ps -l` | Liệt kê container đã dừng gần đây nhất |
+| `docker ps -a` | Liệt kê tất cả các container |
+| `docker ps -q` | Liệt kê tất cả các container (Chỉ hiển thị số ID của các container) |
+| `docker ps -l` | Hiển thị container được tạo mới nhất (bao gồm tất cả các trạng thái) |
 | `docker rm -f {container_id/name}` | Xóa một container |
 | `docker rm $(docker ps -a -q)` | Xóa các containers hiện có |
 | `docker start {new_container_name}` | Khởi động một container |
