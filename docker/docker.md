@@ -47,14 +47,16 @@
 | `docker images -a` | Liệt kê tất cả các image hiện có |
 | `docker images -q` | Liệt kê tất cả các image hiện có (Chỉ hiển thị số ID của các image) |
 | `docker rmi {image_id/name}` | Xóa một image |
+| `docker image rm {image_id/name}` | Xóa một image |
 | `docker rmi $(docker images -q)` | Xóa các images hiện có |
 | `docker container ls` | Liệt kê các container đang chạy |
 | `docker ps` | Liệt kê các container đang chạy |
 | `docker ps -a` | Liệt kê tất cả các container |
 | `docker ps -q` | Liệt kê tất cả các container (Chỉ hiển thị số ID của các container) |
 | `docker ps -l` | Hiển thị container được tạo mới nhất (bao gồm tất cả các trạng thái) |
-| `docker rm -f {container_id/name}` | Xóa một container |
+| `docker rm -f {container_id/name}` | Xóa một container (`-f` nghĩa là filter) |
 | `docker rm $(docker ps -a -q)` | Xóa các containers hiện có |
+| `docker rm $(docker ps -a -q -f 'status=exited')` | Xóa các containers có trạng thái là `exited` |
 | `docker start {new_container_name}` | Khởi động một container |
 | `docker exec -it {new_container_name} /bin/bash` | Truy cập vào container đang chạy |
 | `docker run` | Thao tác đến các images đã tồn tại hoặc có thể truy xuất từ localhost, mỗi lần chạy command sẽ tạo ra một container mới tương ứng |
