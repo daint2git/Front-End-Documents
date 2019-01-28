@@ -132,8 +132,10 @@ docker run -p 9000:80 -it nginx
 | `docker-compose down` | Stop and remove containers, networks, images, and volumes |
 | `docker-compose build` | Build or rebuild services |
 | `docker-compose exec` | Execute a command in a running container |
-| `docker-compose config` | Xác nhận hoặc hiển thị file config compose |
+| `docker-compose config` | Validate and view the Compose file |
 | `docker-compose rm` | Remove stopped containers |
 | `docker-compose start` | Start services |
 | `docker-compose stop` | Stop services |
+| `docker-compose images` | List images |
+| `docker-compose ps` | List containers |
 
