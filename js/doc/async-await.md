@@ -1,6 +1,6 @@
 # async-await
 
-### Example:
+## Ví dụ
 ```js
 const fs = require('fs')
 
@@ -24,4 +24,46 @@ const readFiles = async (...filesPath) => {
 readFiles('Data types.md', 'JSON.md')
 
 console.log('---End')
+```
+
+```js
+const userInfo = {
+  id: 1,
+  name: 'Nguyen Tran Dai',
+  age: 25,
+}
+
+const userSkills = ['js', 'html', 'css']
+
+setTimeout(() => {
+  const getUserInfo = () => new Promise((resolve, reject) => resolve(userInfo))
+
+  const getUserSkills = () => new Promise((resolve, reject) => resolve(userSkills))
+
+  const countUserFriends = () => new Promise((resolve, reject) => resolve(69))
+
+  Promise.all([getUserInfo(), getUserSkills(), countUserFriends()]).then(
+    ([info, skills, friends]) => console.log(info, skills, friends),
+  )
+}, 500)
+
+setTimeout(async () => {
+  const getUserInfo = () => new Promise((resolve, reject) => resolve(userInfo))
+
+  const getUserSkills = () => new Promise((resolve, reject) => resolve(userSkills))
+
+  const countUserFriends = () => new Promise((resolve, reject) => resolve(69))
+
+  // const info = await getUserInfo()
+  // const skills = await getUserSkills()
+  // const friends = await countUserFriends()
+
+  // or
+  const [info, skills, friends] = await Promise.all([
+    getUserInfo(),
+    getUserSkills(),
+    countUserFriends(),
+  ])
+  console.log(info, skills, friends)
+}, 1000)
 ```
