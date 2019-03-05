@@ -107,7 +107,7 @@ const array2 = [1, 2, 3, 4, 5]
 console.log(array1.copyWithin(0, 3, 4)) // [4, 2, 3, 4, 5]
 
 // place at position 1 the elements after position 3
-console.log(array2.copyWithin(1, 3)) // [4, 4, 5, 4, 5]
+console.log(array2.copyWithin(1, 3)) // [1, 4, 5, 4, 5]
 ```
 
 ## Array.every
