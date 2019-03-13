@@ -38,7 +38,7 @@ const res2 = (...args) =>
 // cách thực hiện của hàm compose (đơn giản khi chỉ có một tham số đầu vào)
 const res3 = args3 => (args2 => (args1 => add10(mul5(args1)))(div2(args2)))(sub1(args3))
 
-// một cách sử dụng khác để có kết quả tương tự như hàm compose
+// gọn lại thì thành như thế này
 const res4 = (...args) => add10(mul5(div2(sub1(...args))))
 
 console.log(res1(7)) // 25
