@@ -48,7 +48,7 @@ p { text-decoration: underline overline; }
   - text-decoration-color
   - text-decoration-style
   
-## text-transformation
+## text-transform
 - Thuộc tính điều khiển chữ hoa và chữ thường trong văn bản
 ```css
 p { text-transform: uppercase; }
