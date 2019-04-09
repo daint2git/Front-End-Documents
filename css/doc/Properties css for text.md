@@ -139,7 +139,6 @@ p { word-wrap: break-word; }
 
 ## user-select
 - Thuộc tính quy định liệu văn bản của một phần tử có thể được chọn hay không
-- Chỉ sử dụng được cho `div tag`
 ```css
 div { user-select: auto; }
 
