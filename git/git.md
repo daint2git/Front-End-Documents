@@ -289,7 +289,7 @@ git diff <commit hash code 1> <commit hash code 2>
 - Remove untracked files (e.g., new files, generated files)
 
 ```
-git clean -f
+git clean -fx
 ```
 
 - Remove untracked directories (e.g., new or automatically generated directories)
