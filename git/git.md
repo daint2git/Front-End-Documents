@@ -357,6 +357,16 @@ git push --force
 5. then press enter
 ```
 
+## Git pull after git rebase
+```
+git checkout feature/branch
+git fetch origin feature/branch
+git reset --hard origin/feature/branch
+
+// then if you want to bring in changes in the master branch,
+git rebase origin/master
+```
+
 ## 3 trạng thái của Git
 
 - `Committed` có nghĩa là dữ liệu đã được lưu trữ một cách an toàn trong cơ sở dữ liệu, tức là những gì bạn đã commit thành công
