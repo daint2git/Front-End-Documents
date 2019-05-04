@@ -367,6 +367,13 @@ git reset --hard origin/feature/branch
 git rebase origin/master
 ```
 
+## Khi git push tại một nơi nào đó
+```
+git remote set-url origin https://yourname@github.com/yourname/yourrepo.git
+// or
+git remote set-url origin https://yourname:password@github.com/yourname/yourrepo.git
+```
+
 ## 3 trạng thái của Git
 
 - `Committed` có nghĩa là dữ liệu đã được lưu trữ một cách an toàn trong cơ sở dữ liệu, tức là những gì bạn đã commit thành công
