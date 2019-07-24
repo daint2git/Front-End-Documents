@@ -67,3 +67,35 @@ console.log(protocol)
 console.log(fullHost)
 console.log(fullPath)
 ```
+
+## Query string parameters
+```js
+const objectToQueryString = (obj) => Object.keys(obj).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`).join('&');
+objectToQueryString({name: 'Anonystick', age: 18, address: 'VietNam'})
+```
+
+## Lấy elements chung của 2 arrays
+```js
+const similarity = (arr1, arr2) => arr1.filter(item => arr2.includes(item));
+similarity([0, 1, 2, 3], [1, 2, 4]); // [1,2]
+```
+
+## Check loại thiết bị
+```js
+const detectDeviceType = () =>/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
+```
+
+## Chuyển đổi số thập phân
+```js
+const toDecimalMark = num => num.toLocaleString('en-US');
+toDecimalMark(12305030388.9087); // "12,305,030,388.909"
+```
+
+## Chuyển đổi String với chữ Hoa đầu tiên với nhiều định dạng.
+```js
+const fromCamelCase = (str, separator = '_') =>str.replace(/([a-z\d])([A-Z])/g, '$1' + separator + '$2').replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1' + separator + '$2').toLowerCase();
+
+console.log(fromCamelCase('blogJavascriptAnonystick', ' ')); // 'blog javascript anonysticke'
+console.log(fromCamelCase('blogJavascriptAnonystick', '-')); // 'blog-javascript-anonystick'
+console.log(fromCamelCase('blogJavascriptAnonystick', '_')); // 'blog_javascript_anonystick'
+```
