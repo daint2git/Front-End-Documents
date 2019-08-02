@@ -18,11 +18,11 @@ console.log(
   ),
 ) // true
 
-function isPromise(obj) {
+function isPromise(val) {
   return (
-    !!obj &&
-    (typeof obj === 'object' || typeof obj === 'function') &&
-    typeof obj.then === 'function'
+    !!val &&
+    (typeof val === 'object' || typeof val === 'function') &&
+    typeof val.then === 'function'
   )
 }
 ```
