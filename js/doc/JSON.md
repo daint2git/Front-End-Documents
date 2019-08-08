@@ -15,7 +15,7 @@
 - `stringify` convert an object to a JSON string
 - `parse` convert a JSON string to an object
 
-### Ex:
+Ex:
 ```js
 const myPet = { name: "cucu", weight: 5, isDead: false }
 
@@ -26,4 +26,49 @@ console.log(typeof myPetString) // string
 const myPetObject = JSON.parse(myPetString)
 console.log(myPetObject) // { name: 'cucu', weight: 5, isDead: false }
 console.log(typeof myPetObject) // object
+```
+
+### Các tham số khác của `JSON.stringify`
+
+Ex:
+```js
+const obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: {
+    e: 4,
+  },
+  f: 'hahaha',
+}
+
+const replacer = (key, value) => {
+  if (typeof value === 'number') return value + 1
+  return value
+}
+
+console.log(JSON.stringify(obj, replacer))
+// {"a":2,"b":3,"c":4,"d":{"e":5},"f":"hahaha"}
+
+console.log(JSON.stringify(obj, null, 2))
+// {
+//   "a": 1,
+//   "b": 2,
+//   "c": 3,
+//   "d": {
+//     "e": 4
+//   },
+//   "f": "hahaha"
+// }
+
+console.log(JSON.stringify(obj, null, '_'))
+// {
+// _"a": 1,
+// _"b": 2,
+// _"c": 3,
+// _"d": {
+// __"e": 4
+// _},
+// _"f": "hahaha"
+// }
 ```
