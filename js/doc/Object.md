@@ -54,3 +54,13 @@ Ví dụ khác
     Fruit.prototype.origin = 'VN'
     console.log(AppleFruit.origin) // VN
 ```
+
+## Object literal vs Object create
+
+```js
+console.log({}.__proto__) // {constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+console.log({}.hasOwnProperty) // ƒ hasOwnProperty() { [native code] }
+
+console.log(Object.create(null).__proto__) // undefined
+console.log(Object.create(null).hasOwnProperty) // undefined
+```
