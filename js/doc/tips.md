@@ -130,3 +130,12 @@ const getScrollPositionOfDocument = () => ({
   y: window.pageYOffset || document.documentElement.scrollTop,
 });
 ```
+
+## format currency
+```js
+const formatCurrency = value => value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+// Examples
+console.log(formatCurrency(1001)); // "1,001"
+console.log(formatCurrency(34325055574)); // "34,325,055,574"
+```
