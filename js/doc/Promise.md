@@ -30,7 +30,10 @@
   - Nhận vào một mảng các promises
   - Trả về một promise mới
   - Kết quả của promise mới là kết quả của promise bất kì đầu tiên resolved hoặc rejected.
-- `Promise.allSetted(iterable of multiple promises)`: Chờ cho tất cả các promise được xử lý, kết quả trả về là mảng chứa các object chứa trạng thái và giá trị của promise kể cả resolved hay rejected.
+- `Promise.allSetted(iterable of multiple promises)`: 
+  - Nhận vào một mảng các promises
+  - Trả về một promise mới
+  - Chờ cho tất cả các promise được xử lý, kết quả trả về là mảng chứa các object chứa trạng thái và giá trị của promise kể cả resolved hay rejected.
 - `Promise.any(iterable of multiple promises)`: `experimental`
 
 ### Mô phỏng
