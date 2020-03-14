@@ -194,7 +194,19 @@ Promise.allSettled([p1,p2,p3,p4])
 
 ## Thực tế
 
-#### instance được tạo từ `new Promise()` không truy cập được các static method.
+#### Instance được tạo từ `new Promise()` không truy cập được các static method.
+```js
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("resolve")
+  }, 500)
+})
+
+promise.resolve(10)
+
+// Error: promise.resolve is not a function
+```
+
 
 #### Catch error vs callback error
 - Callback lỗi không bắt được lỗi khi khối promise resolved và trong `callback` của `then` có `throw Error`
@@ -285,7 +297,7 @@ promise.then(data1 => {
 ```
 
 #### chaining
-Example 1
+- Example 1
 ```js
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -322,7 +334,7 @@ p1.then((data) => {
 // Promise 3
 ```
 
-Example 2
+- Example 2
 ```js
 const promise1 = () => fetch('https://jsonplaceholder.typicode.com/posts/1')
 const promise2 = () => fetch('https://jsonplaceholder.typicode.com/posts/2')
