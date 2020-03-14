@@ -21,18 +21,18 @@
 - `Promise.resolve(value)`: Trả về một promise resolved (hoàn thành) với một giá trị cụ thể.
 - `Promise.reject(reason)`: Trả về một promise rejected (lỗi) với một lỗi cụ thể.
 - `Promise.all(iterable of multiple promises)`
-  - Nhận vào một mảng các promises
-  - Trả về một promise mới
+  - Nhận vào một mảng các promise hoặc cũng có thể là non-promise (number, boolean, .etc).
+  - Trả về một promise mới.
   - Chờ tất cả các promise trong mảng resolved, kết quả của promise mới này là một mảng chứa kết quả của các promise theo đúng thứ tự.
-  - 1 promise bất kì rejected, kết quả của promise mới này là lỗi của promise gây lỗi. Các promise khác vẫn chạy nhưng kết quả bị bỏ qua.
+  - 1 promise bất kì rejected, kết quả của promise mới này được trả về ngay lập tức lỗi của promise rejected đó, các promise khác vẫn tiếp tục thực thi nhưng kết quả bị bỏ qua.
   - Thực thi promise dạng parallel.
 - `Promise.race(iterable of multiple promises)`: 
-  - Nhận vào một mảng các promises
-  - Trả về một promise mới
+  - Nhận vào một mảng các promise hoặc cũng có thể là non-promise (number, boolean, .etc).
+  - Trả về một promise mới.
   - Kết quả của promise mới là kết quả của promise bất kì đầu tiên resolved hoặc rejected.
 - `Promise.allSetted(iterable of multiple promises)`: 
-  - Nhận vào một mảng các promises
-  - Trả về một promise mới
+  - Nhận vào một mảng các promise hoặc cũng có thể là non-promise (number, boolean, .etc).
+  - Trả về một promise mới.
   - Chờ cho tất cả các promise được xử lý, kết quả trả về là mảng chứa các object chứa trạng thái và giá trị của promise kể cả resolved hay rejected.
 - `Promise.any(iterable of multiple promises)`: `experimental`
 
