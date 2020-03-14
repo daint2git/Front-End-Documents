@@ -377,6 +377,98 @@ withoutChaining()
 chaining()
 ```
 
+#### Microtasks queue (ES8 term)
+- Khi 1 promise đã sẵn sàng, `.then/catch/finally` của nó được đẩy vào queue, chúng chưa được thực hiện ngay. Khi `JavaScript engine` đã hoàn thành code hiện tại (hoàn thành các task synchronous), nó lấy các task từ queue và thực thi nó.
+- Example
+```js
+console.log('start')
+
+const promise1 = Promise.resolve()
+const promise2 = Promise.reject()
+
+promise1
+  .then(() => {
+    console.log('promise1 then 1 ok')
+  })
+  .then(() => {
+    console.log('promise1 then 2 ok')
+  })
+  .catch(() => {
+    console.log('catch 1')
+  })
+
+promise2
+  .then(() => {
+    console.log('promise2 then 1 ok')
+  })
+  .then(() => {
+    console.log('promise2 then 2 ok')
+  })
+  .catch(() => {
+    console.log('catch 2')
+  })
+
+setTimeout(() => {
+  console.log('setTimeout done')
+}, 0)
+
+console.log('stop')
+
+// start
+// stop
+// promise1 then 1 ok
+// promise1 then 2 ok
+// catch 2
+// setTimeout done
+```
+- Thứ tự xử lý callback trong `then/catch/finally` trong `queue`
+```js
+const promise1 = Promise.reject()
+const promise2 = Promise.resolve()
+const promise3 = Promise.resolve()
+
+promise1
+  .then(() => {
+    console.log('promise1 then')
+  })
+  .catch(() => {
+    console.log('promise1 catch')
+  })
+  .finally(() => {
+    console.log('promise1 finally')
+  })
+
+promise2
+  .then(() => {
+    console.log('promise2 then')
+  })
+  .catch(() => {
+    console.log('promise2 catch')
+  })
+  .finally(() => {
+    console.log('promise2 finally')
+  })
+
+promise3
+  .then(() => {
+    console.log('promise3 then')
+  })
+  .catch(() => {
+    console.log('promise3 catch')
+  })
+  .finally(() => {
+    console.log('promise3 finally')
+  })
+
+
+// promise2 then
+// promise3 then
+// promise1 catch
+// promise1 finally
+// promise2 finally
+// promise3 finally
+```
+
 ### Ví dụ trong nodejs
 - Example 1
 ```js
