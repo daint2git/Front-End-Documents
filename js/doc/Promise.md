@@ -31,6 +31,148 @@
 ## Chú ý
 - instance được tạo từ `new Promise()` không truy cập được các static method.
 
+## Example
+Với es5
+```js
+function MyPromise() {}
+
+MyPromise.prototype.then = function() {
+  console.log("prototype method then")
+}
+
+MyPromise.propertyX = "property"
+
+MyPromise.resolve = function(value) {
+  console.log('static method resolve', value)
+}
+
+MyPromise.all = function(array) {
+  console.log('static method all', array)
+}
+
+const instance = new MyPromise()
+
+// prototype property
+console.log(instance.constructor)
+// prototype method
+instance.then()
+
+// static property
+console.log(MyPromise.propertyX)
+// static method
+MyPromise.resolve('xxx')
+MyPromise.all(['xxx', 'yyy'])
+```
+
+Với es6
+```js
+class MyPromise {
+  then() {
+    console.log("prototype method then")
+  }
+
+  static resolve(value) {
+    console.log('static method resolve', value)
+  }
+
+  static all(array) {
+    console.log('static method all', array)
+  }
+}
+
+MyPromise.propertyX = "property"
+
+const instance = new MyPromise()
+
+// prototype property
+console.log(instance.constructor)
+// prototype method
+instance.then()
+
+// static property
+console.log(MyPromise.propertyX)
+// static method
+MyPromise.resolve('xxx')
+MyPromise.all(['xxx', 'yyy'])
+```
+
+#### chaining
+```js
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Promise 1')
+  })
+})
+
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Promise 2')
+  })
+})
+
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Promise 3')
+  })
+})
+
+p1.then((data) => {
+  console.log(data)
+  return p2
+})
+.then((data) => {
+  console.log(data)
+  return p3
+})
+.then((data) => {
+  console.log(data)
+})
+
+// Promise 1
+// Promise 2
+// Promise 3
+```
+
+### Catch error vs callback error
+- Callback lỗi không bắt được lỗi khi khối promise resolved và trong `callback` của `then` có `throw Error`
+
+Example:
+```js
+const resolvePromise = new Promise((resolve, reject) => {
+  resolve('OK')
+})
+
+const rejectPromise = new Promise((resolve, reject) => {
+  reject('Error nè')
+})
+
+rejectPromise.then(() => {
+  throw new Error('Oh no')
+}).catch((err) => {
+  console.log('Catch lỗi', err)
+})
+
+rejectPromise.then(() => {
+  throw new Error('Oh no')
+}, (err) => {
+  console.log('Callback lỗi', err)
+})
+
+resolvePromise.then(() => {
+  throw new Error('Oh no')
+}).catch((err) => {
+  console.log('Catch lỗi', err)
+})
+
+resolvePromise.then(() => {
+  throw new Error('Oh no')
+}, (err) => {
+  console.log('Callback lỗi', err)
+})
+```
+
+### return vs không return trong `callback` của `then`
+
 ### Example:
 ```js
 const fs = require('fs')
