@@ -1,6 +1,35 @@
-# Promise object
+# Promise
 
-- `Promise`: Là một đối tượng đặc biệt dùng cho các xử lý bất đồng bộ. Nó đại diện cho một xử lý bất đồng bộ và chứa kết quả cũng như các lỗi xảy ra từ xử lý bất đồng bộ đó.
+## Định nghĩa
+`Promise`: Là một đối tượng đặc biệt dùng cho các xử lý bất đồng bộ. Nó đại diện cho một xử lý bất đồng bộ và chứa kết quả cũng như các lỗi xảy ra từ xử lý bất đồng bộ đó.
+
+## States
+- pending
+- fulfilled
+- rejected
+
+## Prototype
+#### Properties
+- constructor
+
+#### Methods
+- then
+- catch
+- finally
+
+## Static methods
+- Promise.resolve(value): Trả về một promise resolved (hoàn thành) với một giá trị cụ thể.
+- Promise.reject(reason): Trả về một promise rejected (lỗi) với một lỗi cụ thể.
+- Promise.all(iterable of multiple promises)
+  - Chờ cho tất cả các promise trong mảng resolved và trả về một mảng chứa kết quả của từng promise.
+  - Nếu 1 promise bất kì rejected, nó lập tức trả về lỗi. Các promise khác vẫn chạy nhưng kết quả bị bỏ qua.
+  - Thực thi promise dạng parallel.
+- Promise.race(iterable of multiple promises): Trả về một kết quả của promise bất kì đầu tiên resolved hoặc rejected.
+- Promise.allSetted(iterable of multiple promises): Chờ cho tất cả các promise được xử lý, kết quả trả về là mảng chứa các object chứa trạng thái và giá trị của promise kể cả resolved hay rejected.
+- Promise.any(iterable of multiple promises): experimental
+
+## Chú ý
+- instance được tạo từ `new Promise()` không truy cập được các static method.
 
 ### Example:
 ```js
