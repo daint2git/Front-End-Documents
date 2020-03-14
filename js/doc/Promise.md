@@ -172,6 +172,55 @@ resolvePromise.then(() => {
 ```
 
 ### return vs không return trong `callback` của `then`
+Có return
+```js
+const promise = new Promise((resolve, reject) => {
+  resolve(100)
+})
+
+promise.then(data1 => {
+  console.log("ok 1", data1)
+  return data1 * 2
+})
+.then(data2 => {
+  console.log("ok 2", data2)
+})
+.catch(err => {
+  console.log('error', err)
+})
+.finally(() => {
+  console.log('done')
+})
+
+// ok 1 100
+// ok 2 200
+// done
+```
+
+Không return
+```js
+const promise = new Promise((resolve, reject) => {
+  resolve(100)
+})
+
+promise.then(data1 => {
+  console.log("ok 1", data1)
+})
+.then(data2 => {
+  console.log("ok 2", data2)
+})
+.catch(err => {
+  console.log('error', err)
+})
+.finally(() => {
+  console.log('done')
+})
+
+// ok 1 100
+// ok 2 undefined
+// done
+```
+
 
 ### Example:
 ```js
