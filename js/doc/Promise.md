@@ -96,43 +96,6 @@ MyPromise.resolve('xxx')
 MyPromise.all(['xxx', 'yyy'])
 ```
 
-#### chaining
-```js
-const p1 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('Promise 1')
-  })
-})
-
-const p2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('Promise 2')
-  })
-})
-
-const p3 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('Promise 3')
-  })
-})
-
-p1.then((data) => {
-  console.log(data)
-  return p2
-})
-.then((data) => {
-  console.log(data)
-  return p3
-})
-.then((data) => {
-  console.log(data)
-})
-
-// Promise 1
-// Promise 2
-// Promise 3
-```
-
 ### Catch error vs callback error
 - Callback lỗi không bắt được lỗi khi khối promise resolved và trong `callback` của `then` có `throw Error`
 
@@ -219,6 +182,84 @@ promise.then(data1 => {
 // ok 1 100
 // ok 2 undefined
 // done
+```
+
+#### chaining
+Example 1
+```js
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Promise 1')
+  })
+})
+
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Promise 2')
+  })
+})
+
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Promise 3')
+  })
+})
+
+p1.then((data) => {
+  console.log(data)
+  return p2
+})
+.then((data) => {
+  console.log(data)
+  return p3
+})
+.then((data) => {
+  console.log(data)
+})
+
+// Promise 1
+// Promise 2
+// Promise 3
+```
+
+Example 2
+```js
+const promise1 = () => fetch('https://jsonplaceholder.typicode.com/posts/1')
+const promise2 = () => fetch('https://jsonplaceholder.typicode.com/posts/2')
+
+function withoutChaining() {
+  promise1()
+    .then(data => data.json())
+    .then(json => {
+      console.log(json.id)
+      console.log(json.title)
+    })
+  
+  promise2()
+    .then(data => data.json())
+    .then(json => {
+      console.log(json.id)
+      console.log(json.title)
+    })
+}
+
+function chaining() {
+  promise1()
+    .then(data => data.json())
+    .then(json => {
+      console.log(json.id)
+      console.log(json.title)
+    })
+    .then(promise2)
+    .then(data => data.json())
+    .then(json => {
+      console.log(json.id)
+      console.log(json.title)
+    })
+}
+ 
+withoutChaining()
+chaining()
 ```
 
 
