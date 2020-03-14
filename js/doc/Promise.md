@@ -18,21 +18,23 @@
 - finally
 
 ## Static methods
-- Promise.resolve(value): Trả về một promise resolved (hoàn thành) với một giá trị cụ thể.
-- Promise.reject(reason): Trả về một promise rejected (lỗi) với một lỗi cụ thể.
-- Promise.all(iterable of multiple promises)
-  - Chờ cho tất cả các promise trong mảng resolved và trả về một mảng chứa kết quả của từng promise.
-  - Nếu 1 promise bất kì rejected, nó lập tức trả về lỗi. Các promise khác vẫn chạy nhưng kết quả bị bỏ qua.
+- `Promise.resolve(value)`: Trả về một promise resolved (hoàn thành) với một giá trị cụ thể.
+- `Promise.reject(reason)`: Trả về một promise rejected (lỗi) với một lỗi cụ thể.
+- `Promise.all(iterable of multiple promises)`
+  - Nhận vào một mảng các promises
+  - Trả về một promise mới
+  - Chờ tất cả các promise trong mảng resolved, kết quả của promise mới này là một mảng chứa kết quả của các promise theo đúng thứ tự.
+  - 1 promise bất kì rejected, kết quả của promise mới này là lỗi của promise gây lỗi. Các promise khác vẫn chạy nhưng kết quả bị bỏ qua.
   - Thực thi promise dạng parallel.
-- Promise.race(iterable of multiple promises): Trả về một kết quả của promise bất kì đầu tiên resolved hoặc rejected.
-- Promise.allSetted(iterable of multiple promises): Chờ cho tất cả các promise được xử lý, kết quả trả về là mảng chứa các object chứa trạng thái và giá trị của promise kể cả resolved hay rejected.
-- Promise.any(iterable of multiple promises): experimental
+- `Promise.race(iterable of multiple promises)`: 
+  - Nhận vào một mảng các promises
+  - Trả về một promise mới
+  - Kết quả của promise mới là kết quả của promise bất kì đầu tiên resolved hoặc rejected.
+- `Promise.allSetted(iterable of multiple promises)`: Chờ cho tất cả các promise được xử lý, kết quả trả về là mảng chứa các object chứa trạng thái và giá trị của promise kể cả resolved hay rejected.
+- `Promise.any(iterable of multiple promises)`: `experimental`
 
-## Chú ý
-- instance được tạo từ `new Promise()` không truy cập được các static method.
-
-## Example
-Với es5
+### Mô phỏng
+- es5
 ```js
 function MyPromise() {}
 
@@ -64,7 +66,7 @@ MyPromise.resolve('xxx')
 MyPromise.all(['xxx', 'yyy'])
 ```
 
-Với es6
+- es6
 ```js
 class MyPromise {
   then() {
@@ -96,7 +98,105 @@ MyPromise.resolve('xxx')
 MyPromise.all(['xxx', 'yyy'])
 ```
 
-### Catch error vs callback error
+### all, race, allSetted
+- all
+```js
+const p1 = Promise.resolve(100)
+const p2 = Promise.resolve(true)
+const p3 = Promise.reject('error')
+const p4 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("p4")
+  }, 2000)
+})
+
+Promise.all([p1,p2,p4])
+  .then(data => {
+    console.log(data)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+
+Promise.all([p1,p2,p3,p4])
+  .then(data => {
+    console.log(data)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+  
+// error
+// [ 100, true, 'p4' ]
+```
+
+- race
+```js
+const p1 = Promise.resolve(100)
+const p2 = Promise.resolve(true)
+const p3 = Promise.reject('error')
+const p4 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("p4")
+  }, 2000)
+})
+
+Promise.race([p1,p2,p4])
+  .then(data => {
+    console.log(data)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+
+Promise.race([p1,p2,p3,p4])
+  .then(data => {
+    console.log(data)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+
+// 100
+// 100
+```
+
+- allSettled
+```js
+const p1 = Promise.resolve(100)
+const p2 = Promise.resolve(true)
+const p3 = Promise.reject('error')
+const p4 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("p4")
+  }, 2000)
+})
+
+Promise.allSettled([p1,p2,p4])
+  .then(data => {
+    console.log(data)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+
+Promise.allSettled([p1,p2,p3,p4])
+  .then(data => {
+    console.log(data)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+
+// Array [Object { status: "fulfilled", value: 100 }, Object { status: "fulfilled", value: true }, Object { status: "fulfilled", value: "p4" }]
+// Array [Object { status: "fulfilled", value: 100 }, Object { status: "fulfilled", value: true }, Object { status: "rejected", reason: "error" }, Object { status: "fulfilled", value: "p4" }]
+```
+
+## Thực tế
+
+#### instance được tạo từ `new Promise()` không truy cập được các static method.
+
+#### Catch error vs callback error
 - Callback lỗi không bắt được lỗi khi khối promise resolved và trong `callback` của `then` có `throw Error`
 
 Example:
@@ -134,8 +234,8 @@ resolvePromise.then(() => {
 })
 ```
 
-### return vs không return trong `callback` của `then`
-Có return
+#### return vs không return trong `callback` của `then`
+- Có return
 ```js
 const promise = new Promise((resolve, reject) => {
   resolve(100)
@@ -160,7 +260,7 @@ promise.then(data1 => {
 // done
 ```
 
-Không return
+- Không return
 ```js
 const promise = new Promise((resolve, reject) => {
   resolve(100)
@@ -262,8 +362,8 @@ withoutChaining()
 chaining()
 ```
 
-
-### Example:
+### Ví dụ trong nodejs
+- Example 1
 ```js
 const fs = require('fs')
 
@@ -285,16 +385,9 @@ readFilePromise('Data types.md')
 console.log('---End')
 ```
 
-- `Promise.all(iterator)`: Nhận vào một mảng các promises và trả về một promise mới và promise mới này chỉ được kết thúc khi tất cả các promise trong `iterable` kết thúc hoặc có một promise nào đó xử lý thất bại. Kết quả của promise mới này là một mảng chứa kết quả của tất cả các promise theo đúng thứ tự hoặc kết quả lỗi của promise gây lỗi.
-
-### Example:
+- Example 2
 ```js
 Promise.all([readFilePromise('Data types.md'), readFilePromise('JSON.md')])
   .then(values => values.map(value => console.log(value)))
   .catch(err => console.error(err))
 ```
-
-- `Promise.race(iterator)`: Nhận vào một mảng các promises và resolve/reject ngay khi một trong các promises trong mảng resolve/reject.
-- `Promise.resolve()`: Trả về một promise được tự động resolve.
-- `Promise.reject()`: Trả về một promise được tự động reject.
-
