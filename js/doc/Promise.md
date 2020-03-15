@@ -339,6 +339,49 @@ p1.then((data) => {
 
 - Example 2
 ```js
+const p1 = data => new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('Promise 1')
+    resolve(data)
+  })
+})
+
+const p2 = data => new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('Promise 2')
+    resolve(data)
+  })
+})
+
+const p3 = data => new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('Promise 3')
+    resolve(data)
+  })
+})
+
+p1(1).then((data) => {
+  console.log(data)
+  return p2(data + 1)
+})
+.then((data) => {
+  console.log(data)
+  return p3(data + 1)
+})
+.then((data) => {
+  console.log(data)
+})
+
+// Promise 1
+// 1
+// Promise 2
+// 2
+// Promise 3
+// 3
+```
+
+- Example 3
+```js
 const promise1 = () => fetch('https://jsonplaceholder.typicode.com/posts/1')
 const promise2 = () => fetch('https://jsonplaceholder.typicode.com/posts/2')
 
