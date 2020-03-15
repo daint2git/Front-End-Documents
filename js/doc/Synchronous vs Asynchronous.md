@@ -98,3 +98,6 @@ console.log('Script End');
 // Promise resolved
 // setTimeout
 ```
+
+## Visualizing the javascript runtime at runtime
+http://latentflip.com/loupe
